@@ -1,19 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { Grid, Row, Col } from 'react-bootstrap';
+import '../../main.css';
 
 const Menu = () => (
-    <div className="blog-masthead">
-        <div className="container">
-            <nav className="nav blog-nav">
-                <a >
-                    <Link className="nav-link" to="/">Home</Link>
-                </a>
-                <a >
-                    <Link className="nav-link" to="/criar/">Criar Artigos</Link>
-                </a>
-            </nav>
-        </div>
+    <div className="p-1 d-flex justify-content-between bars">
+        <div className="p-2 small-logo transparent"></div>
+        <div className="p-2 primary-gray">PÁGINA PRINCIPAL</div>
+        <div className="p-2">image</div>
     </div>
 );
 

@@ -1,25 +1,25 @@
 import React from "react";
-import List from "./List";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import ListDetails from "./ListDetails";
-import Form from "./Form";
+
+import Pedido from "./Pedido";
+
 import Menu from "./Menu";
+import Footer from "./Footer";
+import Stage from "./Stage";
 
 const AppRouter = () => (
 
     <Router>
-            <div>
+            <div className="container-fluid h-100 p-0">
                 <Menu />
 
-                <div className="container">
-                    <div className="row">
+
                                     <Switch>
-                                    <Route exact path="/" component={List} />
-                                    <Route exact path='/article/:id' component={ ListDetails } />
-                                    <Route exact path='/criar/' component={ Form } />
+                                        <Route exact path='/' component={ Stage }  />
+                                        <Route exact path='/pedido/' component={ Pedido }  />
                                     </Switch>
-                    </div>
-                </div>
+
+                <Footer />
         </div>
     </Router>
 );
