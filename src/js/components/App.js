@@ -3,23 +3,23 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import Pedido from "./Pedido";
 
-import Menu from "./Menu";
-import Footer from "./Footer";
+import Menu from "./MenuPath";
+import Footer from "./FooterPath";
 import Stage from "./Stage";
+import Viagem from "./Viagem";
+import Condutores from "./ListaCondutores";
 
 const AppRouter = () => (
 
     <Router>
-            <div className="container-fluid h-100 p-0">
-                <Menu />
-
-
+        <div className="h-100 p-0">
                                     <Switch>
                                         <Route exact path='/' component={ Stage }  />
                                         <Route exact path='/pedido/' component={ Pedido }  />
-                                    </Switch>
+                                        <Route exact path='/viagem/' component={ Viagem }  />
+                                        <Route exact path='/condutores/' component={ Condutores }  />
 
-                <Footer />
+                                    </Switch>
         </div>
     </Router>
 );

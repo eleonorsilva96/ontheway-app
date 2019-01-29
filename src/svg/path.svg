@@ -1,0 +1,43 @@
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="100%" height="100%"
+	 viewBox="0 0 746 108" style="enable-background:new 0 0 746 108;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.5;}
+	.st1{clip-path:url(#XMLID_94_);}
+	.st2{fill:none;stroke:#9A9B9C;stroke-width:5;stroke-linejoin:round;}
+	.st3{opacity:0.8;}
+	.st4{fill:none;stroke:#293FC0;stroke-width:5;stroke-linejoin:round;}
+	.st5{opacity:0.1;}
+	.st6{fill:#9A9B9C;}
+	.st7{fill:#293FC0;}
+</style>
+<g id="XMLID_5191_">
+	<g id="XMLID_5427_" class="st0">
+		<defs>
+			<rect id="XMLID_5428_" x="-7.6" y="13.3" class="st0" width="201" height="108"/>
+		</defs>
+		<clipPath id="XMLID_94_">
+			<use xlink:href="#XMLID_5428_"  style="overflow:visible;"/>
+		</clipPath>
+		<g id="XMLID_5429_" class="st1">
+			<polyline id="XMLID_15_" class="st2" points="723,124.1 638.2,67.5 557.6,81.7 471.5,47.8 407.9,78.8 320.3,97.2 227,37.9 
+				131.3,85.6 16.3,37.9 			"/>
+		</g>
+	</g>
+	<g id="XMLID_5310_" class="st3">
+		<g id="XMLID_16_">
+			<polyline id="XMLID_25_" class="st4" points="227,34.9 320.3,94.3 407.9,75.9 471.5,44.8 557.6,78.7 638,59.7 731,94.9 			"/>
+		</g>
+	</g>
+	<g id="XMLID_5291_" class="st5">
+		<g id="XMLID_13_">
+			<circle id="XMLID_22_" class="st6" cx="193.4" cy="53.4" r="49.5"/>
+		</g>
+	</g>
+	<g id="XMLID_5193_">
+		<g id="XMLID_14_">
+			<circle id="XMLID_20_" class="st7" cx="193.4" cy="53.4" r="17.9"/>
+		</g>
+	</g>
+</g>
+</svg>

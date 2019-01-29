@@ -9,6 +9,15 @@ html,body{
 body {
     font-family: 'Lato', sans-serif;
     color: #555;
+    overflow-x: hidden;
+    letter-spacing: 0.025em;
+}
+
+.scroll-y{
+    overflow-y: scroll;
+    height: 310px;
+    position: relative;
+    z-index: 1;
 }
 
 h1, .h1,
@@ -18,8 +27,38 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
     font-family: 'Lato', sans-serif;
-    font-weight: normal;
-    color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+h6{
+    font-size: 0.78em;
+}
+
+h5{
+    font-size: 1.05em;
+}
+
+.link-no-decoration,.link-no-decoration:hover,.link-no-decoration:active,.link-no-decoration:focus{
+    outline: 0;
+    text-decoration: none;
+    color: inherit;
+    width: inherit;
+    height: inherit;
+}
+
+.white-btn:active{
+    border: 2px solid #1220DC;
+    font-weight: bold;
+}
+
+.blue-btn:active{
+    border: 2px solid #FCFCFC;
+    font-weight: bold;
+}
+
+.h4{
+    font-size: 15px;
 }
 
 .flex-fill{
@@ -28,6 +67,164 @@ h6, .h6 {
 
 .container-fluid {
     padding: 0;
+}
+
+.shadow{
+    box-shadow: 0 4px 12px rgba(0,0,0,0), 0 0 8px rgba(0,0,0,0.15);
+}
+
+.path{
+    background: url("svg/path.svg") no-repeat center;
+    background-size: 101%;
+    width: 102%;
+    height: 65px;
+    position: absolute;
+    top: 1.5rem;
+}
+
+
+.path-bottom{
+    background: url("svg/path_bottom.svg") no-repeat center;
+    background-size: 104%;
+    width: 102%;
+    height: 65px;
+    position: absolute;
+    bottom: 1.9rem;
+}
+
+textarea,
+select,
+input{
+    border: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+.date-time input{
+    font-size: 1rem;
+}
+
+.date-time-input-size{
+    width: 60px;
+}
+
+.custom-select{
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+}
+
+.custom-select, option{
+    font-size: 0.9rem;
+    color: #1220DC;
+}
+
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+option:not(:checked) {
+    color: #000000;
+}
+
+.custom-select:focus{
+    border:2px solid #1220DC;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+    border:2px solid #1220DC;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+::-webkit-input-placeholder {
+    font-size: 13px!important;
+    color: #A9AAAB;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    font-size: 13px!important;
+    color: #A9AAAB;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 13px!important;
+    color: #A9AAAB;
+}
+
+.input-disabled::-moz-placeholder, .input-disabled::-webkit-input-placeholder, .input-disabled:-moz-placeholder{
+    color: #293FC0;
+    opacity: 1;
+}
+
+.input-value-size{
+    font-size: 0.9rem;
+    color: #A9AAAB;
+}
+
+input, select, textarea{
+    color: #1220DC;
+}
+
+textarea:focus, input:focus {
+    color: #1220DC;
+}
+
+.bring-to-front{
+    z-index: 1;
+}
+
+.send-to-back{
+    z-index: -1;
+}
+
+.background{
+    width: 100%;
+    position: absolute;
+    height: 100%;
+}
+
+/*
+* Disabled components
+ */
+
+.input-disabled.col-8.m-2.form-control-lg:disabled{
+    background-color: #FCFCFC;
+    opacity: 0.8;
+}
+
+.input-disabled.pt-2.pb-2.col-11.gray-2-text.rounded:disabled{
+    background-color: #FCFCFC;
+    opacity: 0.8;
+}
+
+.input-disabled.pt-2.pb-2.col-11.gray-2-text.rounded{
+    color: #293FC0;
+    opacity: 1;
+}
+
+.input-disabled.date-time-input-size.gray-2-text.p-2.rounded:disabled{
+    background-color: #FCFCFC;
+    opacity: 0.8;
+}
+
+.input-disabled.date-time-input-size.gray-2-text.p-2.rounded{
+    color: #293FC0;
+    opacity: 1;
 }
 
 /*
@@ -161,6 +358,11 @@ Colors - background
 * Menu
 */
 
+.menu{
+    height: 55px;
+    position: relative;
+}
+
 /*
 * Icons
  */
@@ -209,7 +411,7 @@ Colors - background
 }
 
 .footer {
-    height: 7.8%;
+    height: 60px;
 }
 
 
@@ -218,16 +420,25 @@ Colors - background
 * Stage
  */
 .stage{
+    position: relative;
+    z-index: 1;
     background: url("imgs/img_home.png") no-repeat center;
     background-size: cover;
     width: 100%;
-    height: 85%;
+    height: 84.5%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.stage-no-photo{
+    width: 100%;
+    height: 84.5%;
     max-width: 100%;
     max-height: 100%;
 }
 
 .stage-items{
-    height: 80%;
+    height: 78%;
 }
 
 .logo-home{
@@ -240,6 +451,18 @@ Colors - background
 }
 
 .primary-btn{
+    border-radius: 50px;
+    max-width: 100%;
+    height: 59px;
+    width: 200px;
+    max-height: 100%;
+}
+
+.font-size-primary{
+    font-size: 18px;
+}
+
+.secondary-btn{
     border-radius: 50px;
     max-width: 100%;
     height: 55px;
@@ -256,4 +479,154 @@ Colors - background
     max-width: 100%;
     max-height: 100%;
     background-size: contain;
+}
+
+.spacing-top{
+    margin-top: 3rem;
+}
+
+.spacing-bottom{
+    margin-bottom: 3rem;
+}
+
+.spacing-top-b{
+    margin-top: 3rem;
+}
+
+/*
+* Viagem
+ */
+
+.checkbox{
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    height: 40px;
+    width: 110px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark {
+    background-color: #B5B6B6;
+    color: #FCFCFC;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox input:checked ~ .checkmark {
+    background-color: #1220DC;
+    background-color: #1220DC;
+    color: #FCFCFC;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator - x */
+.checkbox .checkmark:after {
+
+}
+
+/*
+* Upload Image
+ */
+
+.previewComponent{
+    width: 45px;
+    height: 45px;
+}
+
+.previewComponentForm{
+    width: inherit;
+    height: inherit;
+    position: absolute;
+}
+
+.fileInput{
+    width: inherit;
+    height: inherit;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.imgPreview{
+    height: inherit;
+    width: inherit;
+}
+
+.imgPreview img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    border: 2px solid #9A9B9C;
+}
+
+.image-default{
+    background: url("imgs/icons/user.png") no-repeat center;
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.icon-star{
+    background: url("imgs/icons/star.png") no-repeat center;
+    background-size: contain;
+    width: 31px;
+    height: 20px;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.price{
+    background-color: #1220DC;
+    color: #FCFCFC;
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0), 0 0 8px rgba(0,0,0,0.15);
+}
+
+.previewComponent-md{
+    width: 55px;
+    height: 60px;
+}
+
+.location-img{
+    background: url("imgs/locations.png") no-repeat center;
+    background-size: contain;
+    width: 20px;
+    height: 73px;
 }

@@ -1,0 +1,39 @@
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%"
+	 viewBox="0 0 746 108" style="enable-background:new 0 0 746 108;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.5;clip-path:url(#XMLID_157_);fill:none;stroke:#9A9B9C;stroke-width:5;stroke-linejoin:round;}
+	.st1{opacity:0.8;}
+	.st2{fill:none;stroke:#293FC0;stroke-width:5;stroke-linejoin:round;}
+	.st3{opacity:0.1;}
+	.st4{fill:#9A9B9C;}
+	.st5{fill:#293FC0;}
+</style>
+<g id="XMLID_7091_">
+	<defs>
+		<rect id="XMLID_7092_" x="465.5" y="-11.4" width="267.9" height="144.5"/>
+	</defs>
+	<clipPath id="XMLID_157_">
+		<use xlink:href="#XMLID_7092_"  style="overflow:visible;"/>
+	</clipPath>
+	<polyline id="XMLID_7093_" class="st0" points="726.5,86.8 611.5,39.1 515.8,86.8 422.5,27.5 334.9,45.8 271.3,76.9 185.2,43 
+		104.6,57.1 19.8,0.6 	"/>
+</g>
+<g id="XMLID_7086_" class="st1">
+	<g id="XMLID_105_">
+		<polyline id="XMLID_130_" class="st2" points="516.5,86.8 423.2,27.4 335.6,45.8 272,76.9 185.8,43 105.2,57.1 12.6,25.3 		"/>
+	</g>
+</g>
+<g id="XMLID_7070_">
+	<g id="XMLID_7081_" class="st3">
+		<g id="XMLID_101_">
+			<circle id="XMLID_123_" class="st4" cx="466.1" cy="54.7" r="49.5"/>
+		</g>
+	</g>
+	<g id="XMLID_7071_">
+		<g id="XMLID_102_">
+			<circle id="XMLID_115_" class="st5" cx="466.1" cy="54.7" r="17.9"/>
+		</g>
+	</g>
+</g>
+</svg>
