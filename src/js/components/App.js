@@ -8,6 +8,8 @@ import Footer from "./FooterPath";
 import Stage from "./Stage";
 import Viagem from "./Viagem";
 import Condutores from "./ListaCondutores";
+import Condutor from "./Condutor";
+
 
 const AppRouter = () => (
 
@@ -18,6 +20,7 @@ const AppRouter = () => (
                                         <Route exact path='/pedido/' component={ Pedido }  />
                                         <Route exact path='/viagem/' component={ Viagem }  />
                                         <Route exact path='/condutores/' component={ Condutores }  />
+                                        <Route exact path='/condutor/' component={ Condutor }  />
 
                                     </Switch>
         </div>

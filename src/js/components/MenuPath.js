@@ -19,7 +19,7 @@ const MenuPath = props => {
                     </div>
                 </div>
                 <ImageUpload />
-                <div ref={props.pathRef} className="path align-self-center">
+                <div className="path align-self-center">
                 </div>
                 <div className="background white shadow align-self-center">
 

@@ -1,4 +1,4 @@
-//TODO tentar passar a ref de outra componente
+
 
 import React from "react";
 import { Link } from "react-router-dom";
@@ -45,13 +45,13 @@ class ListaCondutores extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTween = TweenLite.to(this.myElement, 1, {display:"none"});
+        this.myTween = TweenLite.to(this.myElement, 1, { ease:Power3.easeOut,display:"none"});
     }
 
     render (){
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath pathRef={div => this.myElement = div}/>
+                <MenuPath />
                 <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
                     <div className="container-fluid mt-5 pt-2">
                             <div className="row justify-content-center">
@@ -159,7 +159,7 @@ class ListaCondutores extends React.Component{
                     </div>
                             </div>
                     </div>
-                <FooterPath />
+                <FooterPath pathRef={div => this.myElement = div} />
             </div>
         );
     }
