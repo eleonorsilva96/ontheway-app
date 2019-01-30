@@ -1,24 +1,3 @@
-# react - redux - saga introduction
-> Introdução ao desenvolvimento em React com recurso a Redux e Redux Saga
-
-[![Donate](https://img.shields.io/badge/donate-patreon-orange.svg)](https://www.patreon.com/valentinogagliardi)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
-
-## Development
-
-```bash
-npm i && npm run start
-```
-
-## Meta
-Baseado no Tutorial Redux de:
-Valentino Gagliardi - [valentinog.com](https://www.valentinog.com) - valentino@valentinog.com
-Disponível em: <br>
-https://www.valentinog.com/blog/react-redux-tutorial-beginners/
-<br><br>
-E na introdução ao React Saga disponível em:<br>
-https://www.npmjs.com/package/redux-saga
-
-## License
-
-This project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+NPM Packages<br/><br/>
+npm i && npm run start<br/>
+npm i react-router-dom
