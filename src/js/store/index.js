@@ -12,9 +12,7 @@ import review from "../reducers/review";
 
 
 // importar os sagas da aplicação
-import mySaga from '../sagas/articles';
-import mySagaArticleDetail from '../sagas/article';
-import mySagaArticlePOST from '../sagas/PostArticles';
+import mySagas from "../sagas/index";
 
 
 // inicializar o saga Middleware
@@ -24,7 +22,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
     // caso exista mais do que 1 reducer, usar esta função para "combiná-los"
   combineReducers({
-    prdouto, produtos, viagem, viagems, user, review
+    produto, produtos, viagem, viagems, user, review
   }),
     // associar o saga à store do Redux
     applyMiddleware(sagaMiddleware)

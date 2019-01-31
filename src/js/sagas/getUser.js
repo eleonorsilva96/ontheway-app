@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { FETCH_USER, USER_FETCH_SUCCESS, USER_FETCH_ERROR } from '../constants/action-types-users';
+import { FETCH_USER, USER_FETCH_SUCCESS, USER_FETCH_ERROR } from '../constants/action-types';
 import { ENDPOINT } from '../constants/services';
 
 function fetchDetail(id){
