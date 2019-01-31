@@ -45,7 +45,7 @@ class ListaCondutores extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTween = TweenLite.to(this.myElement, 1, { ease:Power3.easeOut,display:"none"});
+        this.myTween = TweenLite.to(this.myElement, 1, {ease:Power3.easeOut,autoAlpha:0}, '-=900');
     }
 
     render (){

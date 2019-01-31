@@ -43,6 +43,10 @@ h5{
     font-size: 1.05em;
 }
 
+.font-xs{
+    font-size: 0.77em;
+}
+
 .link-no-decoration,.link-no-decoration:hover,.link-no-decoration:active,.link-no-decoration:focus{
     outline: 0;
     text-decoration: none;
@@ -75,6 +79,7 @@ h5{
 
 .shadow{
     box-shadow: 0 4px 12px rgba(0,0,0,0), 0 0 8px rgba(0,0,0,0.15);
+    --box-shadow-color: #1220DC;
 }
 
 .path{
@@ -298,6 +303,11 @@ textarea:focus, input:focus {
 Colors - background
  */
 
+.border-primary-white{
+    border: 1px solid #1220DC;
+    height: 75%;
+}
+
 .white{
     background-color: #FCFCFC;
 }
@@ -418,7 +428,19 @@ Colors - background
     height: 60px;
 }
 
+.icon-time{
+    background: url("imgs/icons/time.png") no-repeat center;
+    background-size: contain;
+    width: 29px;
+    height: 26px;
+}
 
+.icon-calender{
+    background: url("imgs/icons/calender.png") no-repeat center;
+    background-size: contain;
+    width: 29px;
+    height: 26px;
+}
 
 /*
 * Stage
@@ -628,9 +650,19 @@ Colors - background
     height: 60px;
 }
 
+.previewComponent-gd{
+    width: 78px;
+    height: 80px;
+}
+
 .location-img{
     background: url("imgs/locations.png") no-repeat center;
     background-size: contain;
     width: 20px;
     height: 73px;
+}
+
+.circle-size{
+    height: 45px;
+    width: 50px;
 }
