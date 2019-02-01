@@ -5,8 +5,6 @@ import '../../main.css';
 import MenuPath from "./MenuPath";
 import FooterPath from "./FooterPath";
 
-import img from '../../imgs/logo_home.png';
-
 class Stage extends React.Component {
     constructor(props){
         super(props);

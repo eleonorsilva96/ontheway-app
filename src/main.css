@@ -83,7 +83,7 @@ h5{
 }
 
 .path{
-    background: url("svg/path.svg") no-repeat center;
+    background: url("/svg/path.svg") no-repeat center;
     background-size: 101%;
     width: 102%;
     height: 65px;
@@ -93,7 +93,7 @@ h5{
 
 
 .path-bottom{
-    background: url("svg/path_bottom.svg") no-repeat center;
+    background: url("/svg/path_bottom.svg") no-repeat center;
     background-size: 104%;
     width: 102%;
     height: 65px;
@@ -303,9 +303,14 @@ textarea:focus, input:focus {
 Colors - background
  */
 
-.border-primary-white{
+.background-white-condutor{
     border: 1px solid #1220DC;
     height: 75%;
+}
+
+.background-white-review{
+    border: 1px solid #1220DC;
+    height: 60%;
 }
 
 .white{
@@ -388,34 +393,34 @@ Colors - background
 }
 
 .small-logo{
-    background: url("imgs/icons/menu_logo.png") no-repeat center;
+    background: url("/imgs/icons/menu_logo.png") no-repeat center;
     background-size: contain;
     width: 15%;
     height: 45px;
 }
 
 .logo{
-    background: url("imgs/icons/menu_logo.png") no-repeat center;
+    background: url("/imgs/icons/menu_logo.png") no-repeat center;
     background-size: contain;
 }
 
 .search{
-    background: url("imgs/icons/search.png") no-repeat center;
+    background: url("/imgs/icons/search.png") no-repeat center;
     background-size: contain;
 }
 
 .trip{
-    background: url("imgs/icons/search.png") no-repeat center;
+    background: url("/imgs/icons/search.png") no-repeat center;
     background-size: contain;
 }
 
 .message{
-    background: url("imgs/icons/search.png") no-repeat center;
+    background: url("/imgs/icons/search.png") no-repeat center;
     background-size: contain;
 }
 
 .activity {
-    background: url("imgs/icons/search.png") no-repeat center;
+    background: url("/imgs/icons/search.png") no-repeat center;
     background-size: contain;
 }
 
@@ -429,14 +434,14 @@ Colors - background
 }
 
 .icon-time{
-    background: url("imgs/icons/time.png") no-repeat center;
+    background: url("/imgs/icons/time.png") no-repeat center;
     background-size: contain;
     width: 29px;
     height: 26px;
 }
 
 .icon-calender{
-    background: url("imgs/icons/calender.png") no-repeat center;
+    background: url("/imgs/icons/calender.png") no-repeat center;
     background-size: contain;
     width: 29px;
     height: 26px;
@@ -448,7 +453,7 @@ Colors - background
 .stage{
     position: relative;
     z-index: 1;
-    background: url("imgs/img_home.png") no-repeat center;
+    background: url("/imgs/img_home.png") no-repeat center;
     background-size: cover;
     width: 100%;
     height: 84.5%;
@@ -468,7 +473,7 @@ Colors - background
 }
 
 .logo-home{
-    background: url("imgs/logo_home.png") no-repeat center;
+    background: url("/imgs/logo_home.png") no-repeat center;
     width: 100%;
     height: 115px;
     max-width: 100%;
@@ -499,7 +504,7 @@ Colors - background
 .scroll{
     position: relative;
     top: 12rem;
-    background: url("imgs/icons/scroll.png") no-repeat center;
+    background: url("/imgs/icons/scroll.png") no-repeat center;
     width: 40px;
     height: 40px;
     max-width: 100%;
@@ -617,7 +622,7 @@ Colors - background
 }
 
 .image-default{
-    background: url("imgs/icons/user.png") no-repeat center;
+    background: url("/imgs/icons/user.png") no-repeat center;
     background-size: 100%;
     width: 100%;
     height: 100%;
@@ -626,7 +631,7 @@ Colors - background
 }
 
 .icon-star{
-    background: url("imgs/icons/star.png") no-repeat center;
+    background: url("/imgs/icons/star.png") no-repeat center;
     background-size: contain;
     width: 31px;
     height: 20px;
@@ -656,7 +661,7 @@ Colors - background
 }
 
 .location-img{
-    background: url("imgs/locations.png") no-repeat center;
+    background: url("/imgs/locations.png") no-repeat center;
     background-size: contain;
     width: 20px;
     height: 73px;
@@ -665,4 +670,22 @@ Colors - background
 .circle-size{
     height: 45px;
     width: 50px;
+}
+
+/*
+* Review
+ */
+
+.comment-review{
+    width: 80%;
+    height: 227px;
+}
+
+.icon-star-review{
+    width: 61px;
+    padding: 0.5rem;
+}
+
+.textarea-review{
+    height: 40%;
 }

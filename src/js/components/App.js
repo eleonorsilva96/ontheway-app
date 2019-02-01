@@ -9,6 +9,8 @@ import Stage from "./Stage";
 import Viagem from "./Viagem";
 import Condutores from "./ListaCondutores";
 import Condutor from "./Condutor";
+import Review from "./Review";
+
 
 
 const AppRouter = () => (
@@ -21,7 +23,7 @@ const AppRouter = () => (
                                         <Route exact path='/viagem/' component={ Viagem }  />
                                         <Route exact path='/condutores/' component={ Condutores }  />
                                         <Route exact path='/condutor/' component={ Condutor }  />
-
+                                        <Route exact path='/review/' component={ Review }  />
                                     </Switch>
         </div>
     </Router>
