@@ -31,7 +31,8 @@ class Viagem extends React.Component{
             horaInicio: new Date(),
             horaFim: new Date(),
             tamanho: "grande",
-            preco: ""
+            preco: "",
+            tipo_id: 1
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
@@ -72,8 +73,8 @@ class Viagem extends React.Component{
         const { dataViagem } = this.state;
         const { horaInicio } = this.state;
         const { horaFim } = this.state;
-        const id = "";
-        this.props.addViagem({ origem, destino, tamanho, preco, dataViagem, horaInicio, horaFim });
+        const tipo_id = 1;
+        this.props.addViagem({ origem, destino, tamanho, preco, dataViagem, horaInicio, horaFim, tipo_id });
         this.setState({ origem: "" , destino: "", tamanho: "", preco: "", dataViagem: "", horaInicio: "", horaFim: ""});
     }
 

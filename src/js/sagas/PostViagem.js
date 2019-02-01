@@ -34,6 +34,7 @@ function addViagemPOST(viagem){
       preco: viagem.payload.preco,
       tamanho: viagem.payload.tamanho,
       user_id: 2,
+      tipo_id: viagem.payload.tipo_id,
     })
   }).then(response => response.json(), );
 }
