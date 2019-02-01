@@ -13,16 +13,30 @@ import FooterPath from "./FooterPath";
 registerLocale('pt', pt);
 setDefaultLocale('pt');
 
+import { connect } from "react-redux";
+// import { fetchViagems } from "../actions/viagems";
+
+// const mapDispatchToProps = dispatch => {
+//     return {
+//       fetchViagems: () => dispatch(fetchViagems()),
+//     };
+// };
+
 class Pedido extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            origem: "",
+            destino: "",
+            nomeProduto: "",
+            tamanho: "",
             startDate: new Date(),
             endDate: new Date()
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
-
+        this.handleChange3 = this.handleChange3.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(date) {
@@ -37,20 +51,36 @@ class Pedido extends React.Component{
         });
     }
 
+    handleChange3(event) {
+        this.setState({ [event.target.id]: event.target.value });
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        const { origem } = this.state;
+        const { destino } = this.state;
+        const { tamanho } = this.state;
+        const { nomeProduto } = this.state;
+        const id = "";
+        this.props.addArticle({ origem, destino, tamanho, nomeProduto });
+        this.setState({ origem: "" , destino: "", tamanho: "", nomeProduto: ""});
+    }
+
     render (){
+        const { origem, destino, tamanho, nomeProduto } = this.state;
         return(
             <div className="container-fluid h-100 p-0">
                 <MenuPath />
                 <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-center">
                     <div className="container-fluid">
-                        <form>
+                        <form onSubmit={this.handleSubmit}>
                             <div className="spacing-top row justify-content-center">
                                 <label className="mr-3 mb-0 align-self-center">De</label>
-                                <input type="text" placeholder="Origem" className="col-8 m-2 form-control-lg"/>
+                                <input type="text" placeholder="Origem" id="origem" value={origem} onChange={this.handleChange3} className="col-8 m-2 form-control-lg"/>
                             </div>
                             <div className="row justify-content-center">
-                                <label className="mr-3 mb-0 align-self-center">De</label>
-                                <input type="text" placeholder="Origem" className="col-8 m-2 form-control-lg"/>
+                                <label className="mr-3 mb-0 align-self-center">Para</label>
+                                <input type="text" placeholder="Destino" id="destino" value={destino} onChange={this.handleChange3} className="col-8 m-2 form-control-lg"/>
                             </div>
 
                             <div className="date-time mt-2 form-group row justify-content-center">
@@ -107,7 +137,7 @@ class Pedido extends React.Component{
                             </div>
 
                             <div className="row justify-content-center">
-                                <input type="text" placeholder="Origem" className="col-4 m-2 form-control-lg"/>
+                                <input type="text" placeholder="Nome do Produto" id="nomeProduto" value={nomeProduto} onChange={this.handleChange3} className="col-4 m-2 form-control-lg"/>
                                 <select className="custom-select custom-select-lg col-4 m-2 font-weight-normal">
                                     <option value="1">Grande&nbsp;(até 50kg)</option>
                                     <option value="2">Médio&nbsp;(até 30kg)</option>
@@ -130,4 +160,5 @@ class Pedido extends React.Component{
     }
 }
 
-export default Pedido;
+const PedidoExp = connect(null, null)(Pedido);
+export default PedidoExp;

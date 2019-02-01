@@ -4,9 +4,14 @@ import { ENDPOINT } from '../constants/services';
 
 function addViagemPOST(viagem){
   console.log('response', JSON.stringify({
-    // title: produto.payload.title,
-    // description: article.payload.description,
-    // user_id: 0,
+    origem: viagem.payload.origem,
+    destino: viagem.payload.destino,
+    data: viagem.payload.dataViagem,
+    horaInicio: viagem.payload.horaInicio,
+    horaFim: viagem.payload.horaFim,
+    preco: viagem.payload.preco,
+    tamanho: viagem.payload.tamanho,
+    user_id: 2,
   }));
   return fetch(ENDPOINT+'viagem',{
     method: 'POST',
@@ -25,7 +30,7 @@ function addViagemPOST(viagem){
 function* addNewViagem(viagem){
   console.log('POST', viagem);
   try{
-    const viagems = yield call(addProdutoPOST, viagem);
+    const viagems = yield call(addViagemPOST, viagem);
      //yield put({type: ARTICLES_FETCH_SUCCEEDED, payload: articles});
     console.log('success POST');
   } catch(e){
@@ -35,7 +40,7 @@ function* addNewViagem(viagem){
 }
 
 function* mySagaViagemPOST(){
-  console.log('article saga POST');
+  console.log('viagem saga POST');
   yield takeLatest(ADD_VIAGEM, addNewViagem);
 }
 
