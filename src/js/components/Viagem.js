@@ -30,12 +30,13 @@ class Viagem extends React.Component{
             dataViagem: new Date(),
             horaInicio: new Date(),
             horaFim: new Date(),
-            tamanho: "",
+            tamanho: "grande",
             preco: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
         this.handleChange3 = this.handleChange3.bind(this);
+        this.handleChange4 = this.handleChange4.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
@@ -49,6 +50,11 @@ class Viagem extends React.Component{
     handleChange3(date) {
         this.setState({
             horaInicio: date,
+        });
+    }
+
+    handleChange4(date) {
+        this.setState({
             horaFim: date,
         });
     }
@@ -120,7 +126,7 @@ class Viagem extends React.Component{
                                         <DatePicker
                                             className="date-time-input-size p-2 rounded"
                                             selected={this.state.horaFim}
-                                            onChange={this.handleChange3}
+                                            onChange={this.handleChange4}
                                             showTimeSelect
                                             showTimeSelectOnly
                                             timeIntervals={15}
@@ -143,7 +149,7 @@ class Viagem extends React.Component{
 
                                 <div className="ml-1 pl-3 row justify-content-center">
                                     <select id="tamanho" value={tamanho} onChange={this.handleChange} className="custom-select custom-select-lg col-5 m-2 font-weight-normal">
-                                        <option value="grande" active>Grande&nbsp;(até 50kg)</option>
+                                        <option value="grande">Grande&nbsp;(até 50kg)</option>
                                         <option value="medio">Médio&nbsp;(até 30kg)</option>
                                         <option value="pequeno">Pequeno&nbsp;(até 10kg</option>
                                     </select>
