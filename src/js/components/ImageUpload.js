@@ -42,7 +42,7 @@ class ImageUpload extends React.Component {
         }
 
         return (
-            <div className="previewComponent bring-to-front m-2">
+            <div className="previewComponent-gd mb-3">
                 <form className="previewComponentForm" onSubmit={(e)=>this._handleSubmit(e)}>
                     <input className="fileInput"
                            type="file"

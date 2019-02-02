@@ -13,6 +13,7 @@ import Review from "./Review";
 import Homepage from "./Homepage";
 import Entrar from "./Entrar";
 import Registar from "./Registar";
+import Perfil from "./Perfil";
 
 
 const loader = document.querySelector('.loader');
@@ -37,6 +38,7 @@ class App extends React.Component {
                         <Route exact path='/' component={ Homepage}  />
                         <Route exact path='/entrar/' component={ Entrar }  />
                         <Route exact path='/registar/' component={ Registar }  />
+                        <Route exact path='/perfil/' component={ Perfil }  />
                         <Route exact path='/home/' component={ Stage }  />
                         <Route exact path='/pedido/' component={ Pedido }  />
                         <Route exact path='/viagem/' component={ Viagem }  />
