@@ -19,6 +19,8 @@ function addViagemPOST(viagem){
     tamanho: viagem.payload.tamanho,
     user_id: 2,
   }));
+
+  
   return fetch(ENDPOINT+'viagem',{
     method: 'POST',
     headers: {

@@ -18,7 +18,7 @@ import { connect } from "react-redux";
 
 // const mapDispatchToProps = dispatch => {
 //     return {
-//       fetchViagems: () => dispatch(fetchViagems()),
+//       fetchViagems: viagems => dispatch(fetchViagems(viagems)),
 //     };
 // };
 
@@ -28,30 +28,39 @@ class Pedido extends React.Component{
         this.state = {
             origem: "",
             destino: "",
+            dataViagem: new Date(),
+            horaInicio: new Date(),
+            horaFim: new Date(),
+            tamanho: "grande",
             nomeProduto: "",
-            tamanho: "",
-            startDate: new Date(),
-            endDate: new Date()
+            tipo_id: 1
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
         this.handleChange3 = this.handleChange3.bind(this);
+        this.handleChange4 = this.handleChange4.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(date) {
-        this.setState({
-            startDate: date,
-        });
     }
 
     handleChange2(date) {
         this.setState({
-            endDate: date
+            dataViagem: date,
         });
     }
 
-    handleChange3(event) {
+    handleChange3(date) {
+        this.setState({
+            horaInicio: date,
+        });
+    }
+
+    handleChange4(date) {
+        this.setState({
+            horaFim: date,
+        });
+    }
+
+    handleChange(event) {
         this.setState({ [event.target.id]: event.target.value });
     }
 
@@ -61,9 +70,15 @@ class Pedido extends React.Component{
         const { destino } = this.state;
         const { tamanho } = this.state;
         const { nomeProduto } = this.state;
-        const id = "";
-        this.props.addArticle({ origem, destino, tamanho, nomeProduto });
-        this.setState({ origem: "" , destino: "", tamanho: "", nomeProduto: ""});
+        const { dataViagem } = this.state;
+        const { horaInicio } = this.state;
+        const { horaFim } = this.state;
+        
+        // this.props.fetchViagems({ origem, destino, tamanho, nomeProduto, dataViagem, horaInicio, horaFim });
+        this.props.history.push('/condutores',{
+            state: { origem, destino, tamanho, nomeProduto, dataViagem, horaInicio, horaFim }
+        });
+        this.setState({ origem: "" , destino: "", tamanho: "", preco: "", dataViagem: "", horaInicio: "", horaFim: ""});
     }
 
     render (){
@@ -76,11 +91,11 @@ class Pedido extends React.Component{
                         <form onSubmit={this.handleSubmit}>
                             <div className="spacing-top row justify-content-center">
                                 <label className="mr-3 mb-0 align-self-center">De</label>
-                                <input type="text" placeholder="Origem" id="origem" value={origem} onChange={this.handleChange3} className="col-8 m-2 form-control-lg"/>
+                                <input type="text" placeholder="Origem" id="origem" value={origem} onChange={this.handleChange} className="col-8 m-2 form-control-lg"/>
                             </div>
                             <div className="row justify-content-center">
                                 <label className="mr-3 mb-0 align-self-center">Para</label>
-                                <input type="text" placeholder="Destino" id="destino" value={destino} onChange={this.handleChange3} className="col-8 m-2 form-control-lg"/>
+                                <input type="text" placeholder="Destino" id="destino" value={destino} onChange={this.handleChange} className="col-8 m-2 form-control-lg"/>
                             </div>
 
                             <div className="date-time mt-2 form-group row justify-content-center">
@@ -88,8 +103,8 @@ class Pedido extends React.Component{
                                 <div className="col-4 p-0">
                                     <DatePicker
                                         className="pt-2 pb-2 col-11 rounded"
-                                        selected={this.state.startDate}
-                                        onChange={this.handleChange}
+                                        selected={this.state.dataViagem}
+                                        onChange={this.handleChange2}
                                         locale="pt"
                                         dateFormat="DD-MM-YYYY"
                                         placeholderText="Data"
@@ -99,8 +114,8 @@ class Pedido extends React.Component{
                                 <div>
                                     <DatePicker
                                         className="date-time-input-size p-2 rounded"
-                                        selected={this.state.startDate}
-                                        onChange={this.handleChange}
+                                        selected={this.state.horaInicio}
+                                        onChange={this.handleChange3}
                                         showTimeSelect
                                         showTimeSelectOnly
                                         timeIntervals={15}
@@ -114,8 +129,8 @@ class Pedido extends React.Component{
                                 <div>
                                     <DatePicker
                                         className="date-time-input-size p-2 rounded"
-                                        selected={this.state.endDate}
-                                        onChange={this.handleChange2}
+                                        selected={this.state.horaFim}
+                                        onChange={this.handleChange4}
                                         showTimeSelect
                                         showTimeSelectOnly
                                         timeIntervals={15}
@@ -137,19 +152,22 @@ class Pedido extends React.Component{
                             </div>
 
                             <div className="row justify-content-center">
-                                <input type="text" placeholder="Nome do Produto" id="nomeProduto" value={nomeProduto} onChange={this.handleChange3} className="col-4 m-2 form-control-lg"/>
-                                <select className="custom-select custom-select-lg col-4 m-2 font-weight-normal">
-                                    <option value="1">Grande&nbsp;(até 50kg)</option>
-                                    <option value="2">Médio&nbsp;(até 30kg)</option>
-                                    <option value="3">Pequeno&nbsp;(até 10kg</option>
+                                <input type="text" placeholder="Nome do Produto" id="nomeProduto" value={nomeProduto} onChange={this.handleChange} className="col-4 m-2 form-control-lg"/>
+                                <select id="tamanho" value={tamanho} onChange={this.handleChange} className="custom-select custom-select-lg col-4 m-2 font-weight-normal">
+                                    <option value="grande">Grande&nbsp;(até 50kg)</option>
+                                    <option value="medio">Médio&nbsp;(até 30kg)</option>
+                                    <option value="pequeno">Pequeno&nbsp;(até 10kg)</option>
                                 </select>
                             </div>
 
                             <div className="spacing-bottom spacing-top-b row justify-content-center align-self-center">
                                 <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/condutores/">
+                                {/* <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/condutores/"> */}
+                                <button type="submit" className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold">
                                     Pesquisar
-                               </Link> </div>
+                                </button>
+                               {/* </Link>  */}
+                               </div>
                             </div>
                         </form>
                     </div>

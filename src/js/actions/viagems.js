@@ -7,4 +7,4 @@ export const addViagem = viagem => ({ type: ADD_VIAGEM, payload: viagem });
 export const fetchViagem = viagem => ({ type: FETCH_VIAGEM, payload: viagem });
 
 // definir a action para carregar viagens da api
-export const fetchViagems = () => ({type: FETCH_VIAGEMS});
+export const fetchViagems = viagems => ({type: FETCH_VIAGEMS, payload: viagems});

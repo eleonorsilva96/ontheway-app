@@ -18,7 +18,7 @@ import { fetchViagems } from "../actions/viagems";
 
 const mapDispatchToProps = dispatch => {
     return {
-      fetchViagems: () => dispatch(fetchViagems()),
+      fetchViagems: viagems => dispatch(fetchViagems(viagems)),
     };
 };
 
@@ -55,7 +55,7 @@ class ListaCondutores extends React.Component{
     componentDidMount(){
         // use the node ref to create the animation
         console.log('THIS', this.props);
-        const articles = this.props.viagems;
+        this.props.fetchViagems({ type: "FETCH_VIAGEMS", viagems: this.props.history.location.state.state });
     }
 
     render (){
