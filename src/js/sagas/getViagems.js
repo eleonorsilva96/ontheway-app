@@ -42,7 +42,6 @@ function* fetchViagems(viagems) {
         const search = yield call(fetchAll, viagems);
         const viagens = search.listaViagens;
         yield put({type: VIAGEMS_FETCH_SUCCEEDED, payload: viagens});
-        console.log('aqui', search.listaViagens);
     } catch (e) {
         // caso exista um erro, devolve a mensagem de erro
         console.log('erro', e);
