@@ -14,11 +14,13 @@ const MenuPath = props => {
 
                 </div>
                 <div className="p-2 primary-gray bring-to-front">PÁGINA PRINCIPAL</div>
-                <div className="previewComponent bring-to-front">
-                    <div id="image-default" className="image-default">
-                    </div>
+                <div className="previewComponent bring-to-front m-2">
+                    <Link to="/perfil/">
+                        <div id="image-default" className="imgPreview">
+                            <img src="/imgs/icons/user_no_border.png"/>
+                        </div>
+                    </Link>
                 </div>
-                <ImageUpload />
                 <div className="path align-self-center">
                 </div>
                 <div className="background white shadow align-self-center">
