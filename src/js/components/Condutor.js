@@ -41,6 +41,8 @@ class Condutor extends React.Component{
     render (){
         const viagem = this.props.viagem.viagemInfo;
         console.log('VIAGEM',viagem);
+        if(viagem.user)
+        {
         return(
             <div className="container-fluid h-100 p-0">
                 <MenuPath />
@@ -97,7 +99,7 @@ class Condutor extends React.Component{
                                         <div className="m-3 d-flex flex-column align-items-center">
                                             <h5 className="h4 pb-3 text-uppercase font-weight-bold text-center">viagens<br/>realizadas</h5>
                                             <div className="circle-size d-flex align-items-center justify-content-center rounded-circle white shadow">
-                                                <span id="nr-viagens" className="h5 primary-text font-weight-bold">6</span>
+                                                <span id="nr-viagens" className="h5 primary-text font-weight-bold">{viagem.user.totalViagens}</span>
                                             </div>
                                         </div>
                                         <div className="d-flex m-3 flex-column align-items-center">
@@ -108,10 +110,10 @@ class Condutor extends React.Component{
                                         </div>
                                         <div className="pl-5 pt-2 d-flex flex-column align-items-center">
                                             <div className="row align-items-center align-self-start">
-                                                <h5 className="text-uppercase align-items-center font-weight-bold primary-text">Zé Pedro</h5>
+                                                <h5 className="text-uppercase align-items-center font-weight-bold primary-text">{viagem.user.name}</h5>
                                                 <div className="icon-star">
                                                 </div>
-                                                <span id="review" className="font-weight-bold">3.5</span>
+                                                <span id="review" className="font-weight-bold">{viagem.user.nota}</span>
                                             </div>
                                             <div className="d-flex row align-items-center">
                                                 <p className="text-left">Vamos poupar tempo e dinheiro? E o nosso ambiente também!</p>
@@ -134,6 +136,11 @@ class Condutor extends React.Component{
                 <FooterPath pathRef={div => this.myElement = div} />
             </div>
         );
+        } else {
+            return(
+                <div>Loading....</div>
+              )
+        }
     }
 }
 
