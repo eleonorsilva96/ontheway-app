@@ -47,6 +47,14 @@ h5{
     font-size: 0.77em;
 }
 
+.btn-size{
+    font-size: 1.15rem;
+}
+
+button{
+    border: 0;
+}
+
 .link-no-decoration,.link-no-decoration:hover,.link-no-decoration:active,.link-no-decoration:focus{
     outline: 0;
     text-decoration: none;
@@ -461,6 +469,18 @@ Colors - background
     max-height: 100%;
 }
 
+.stage-homepage{
+    position: relative;
+    z-index: 1;
+    background: url("/imgs/img_home.png") no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    filter: blur(3.5px);
+}
+
 .stage-no-photo{
     width: 100%;
     height: 84.5%;
@@ -470,6 +490,15 @@ Colors - background
 
 .stage-items{
     height: 78%;
+}
+
+.stage-items-homepage{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    padding-bottom: 8rem;
 }
 
 .logo-home{
@@ -688,4 +717,62 @@ Colors - background
 
 .textarea-review{
     height: 40%;
+}
+
+/*
+* Loading Spinner
+ */
+
+.loader {
+    position: absolute;
+    top: calc(50% - 4em);
+    left: calc(50% - 4em);
+    width: 6em;
+    height: 6em;
+    border: 1.1em solid rgba(0, 0, 0, 0.2);
+    border-left: 1.1em solid #000000;
+    border-radius: 50%;
+    animation: load8 1.1s infinite linear;
+    transition: opacity 0.3s;
+}
+
+.loader--hide {
+    opacity: 0;
+}
+
+@keyframes load8 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*
+* Entrar
+ */
+
+.form-control{
+    color: red;
+}
+
+.stage-no-photo-entrar{
+    height: 92.5%;
+}
+
+.letter-spacing-entrar{
+    letter-spacing: 0.7px;
+}
+
+.line-height-entrar{
+    line-height: 23px
+}
+
+.input-width-entrar{
+    width: 56%;
+}
+
+.font-size-entrar{
+    font-size: 1.08rem;
 }

@@ -10,23 +10,44 @@ import Viagem from "./Viagem";
 import Condutores from "./ListaCondutores";
 import Condutor from "./Condutor";
 import Review from "./Review";
+import Homepage from "./Homepage";
+import Entrar from "./Entrar";
+import Registar from "./Registar";
 
 
+const loader = document.querySelector('.loader');
 
-const AppRouter = () => (
+// if you want to show the loader when React loads data again
+const showLoader = () => loader.classList.remove('loader--hide');
 
-    <Router>
-        <div className="h-100 p-0">
-                                    <Switch>
-                                        <Route exact path='/' component={ Stage }  />
-                                        <Route exact path='/pedido/' component={ Pedido }  />
-                                        <Route exact path='/viagem/' component={ Viagem }  />
-                                        <Route exact path='/condutores/' component={ Condutores }  />
-                                        <Route exact path='/condutor/' component={ Condutor }  />
-                                        <Route exact path='/review/' component={ Review }  />
-                                    </Switch>
-        </div>
-    </Router>
-);
+const hideLoader = () => loader.classList.add('loader--hide');
 
-export default AppRouter;
+
+class App extends React.Component {
+
+    componentDidMount() {
+        this.props.hideLoader();
+    }
+
+    render(){
+        return(
+            <Router>
+                <div className="h-100 p-0">
+                    <Switch>
+                        <Route exact path='/' component={ Homepage}  />
+                        <Route exact path='/entrar/' component={ Entrar }  />
+                        <Route exact path='/registar/' component={ Registar }  />
+                        <Route exact path='/home/' component={ Stage }  />
+                        <Route exact path='/pedido/' component={ Pedido }  />
+                        <Route exact path='/viagem/' component={ Viagem }  />
+                        <Route exact path='/condutores/' component={ Condutores }  />
+                        <Route exact path='/condutor/' component={ Condutor }  />
+                        <Route exact path='/review/' component={ Review }  />
+                    </Switch>
+                </div>
+            </Router>
+        );
+    };
+}
+
+export default App;
