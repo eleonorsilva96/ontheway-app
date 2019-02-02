@@ -36,14 +36,12 @@ function fetchAll(viagems) {
       }).then(response => response.json(), );
     }
 
-// worker Saga: irá ser invocada quando ocorrer um FETCH_PRODUTOS action
 function* fetchViagems(viagems) {
-    console.log('SEARCH', viagems);
+
     try {
-        // invocar a função para obter a lista de produtos
         const search = yield call(fetchAll, viagems);
-        // assim que houver uma resposta da API, invoca a action, enviado os novos produtos obtidos
-        yield put({type: VIAGEMS_FETCH_SUCCEEDED, payload: search.listaViagens});
+        const viagens = search.listaViagens;
+        yield put({type: VIAGEMS_FETCH_SUCCEEDED, payload: viagens});
         console.log('aqui', search.listaViagens);
     } catch (e) {
         // caso exista um erro, devolve a mensagem de erro

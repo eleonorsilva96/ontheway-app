@@ -54,13 +54,14 @@ class ListaCondutores extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        console.log('THIS', this.props);
         this.props.fetchViagems({ type: "FETCH_VIAGEMS", viagems: this.props.history.location.state.state });
 
         console.log('THIS2', this.props.viagems);
     }
 
     render (){
+        const viagens = this.props.viagems;
+        console.log('TESTE', viagens);
         return(
             <div className="container-fluid h-100 p-0">
                 <MenuPath />
