@@ -45,7 +45,7 @@ function* addNewViagem(viagem){
   console.log('POST', viagem);
   try{
     const viagems = yield call(addViagemPOST, viagem);
-     //yield put({type: ARTICLES_FETCH_SUCCEEDED, payload: articles});
+     yield put({type: ADD_VIAGEM});
     console.log('success POST');
   } catch(e){
     console.log('Error', e);
