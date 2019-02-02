@@ -4,15 +4,15 @@ import {ENDPOINT} from "../constants/services"
 
 // função para obter os dados da API em formato JSON
 function fetchAll(viagems) {
-    const date = viagems.payload.dataViagem;
+    const date = viagems.payload.viagems.dataViagem;
     const dateBody = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
-    const horaInicio = viagems.payload.horaInicio;
+    const horaInicio = viagems.payload.viagems.horaInicio;
     const horaInicioBody = horaInicio.getHours() + ":" + horaInicio.getMinutes();
-    const horaFim = viagems.payload.horaFim;
+    const horaFim = viagems.payload.viagems.horaFim;
     const horaFimBody = horaFim.getHours() + ":" + horaFim.getMinutes();
     console.log('response', JSON.stringify({
-        origem: viagems.payload.origem,
-        destino: viagems.payload.destino,
+        origem: viagems.payload.viagems.origem,
+        destino: viagems.payload.viagems.destino,
         data: dateBody,
         horaInicio: horaInicioBody,
         horaFim: horaFimBody,
@@ -27,8 +27,8 @@ function fetchAll(viagems) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          origem: viagems.payload.origem,
-          destino: viagems.payload.destino,
+          origem: viagems.payload.viagems.origem,
+          destino: viagems.payload.viagems.destino,
           data: dateBody,
           horaInicio: horaInicioBody,
           horaFim: horaFimBody,
@@ -43,9 +43,11 @@ function* fetchViagems(viagems) {
         // invocar a função para obter a lista de produtos
         const search = yield call(fetchAll, viagems);
         // assim que houver uma resposta da API, invoca a action, enviado os novos produtos obtidos
-        yield put({type: VIAGEMS_FETCH_SUCCEEDED, payload: viagems});
+        yield put({type: VIAGEMS_FETCH_SUCCEEDED, payload: search.listaViagens});
+        console.log('aqui', search.listaViagens);
     } catch (e) {
         // caso exista um erro, devolve a mensagem de erro
+        console.log('erro', e);
         yield put({type: VIAGEMS_FETCH_ERROR, message: e.message});
     }
 }
