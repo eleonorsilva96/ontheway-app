@@ -16,28 +16,28 @@ setDefaultLocale('pt');
 import { connect } from "react-redux";
 import { fetchViagems } from "../actions/viagems";
 
+const mapStateToProps = state => {
+
+    return { viagems: state.viagems };
+  };
+
 const mapDispatchToProps = dispatch => {
     return {
-      fetchViagems: () => dispatch(fetchViagems()),
+      fetchViagems: viagems => dispatch(fetchViagems(viagems)),
     };
 };
 
 class ListaCondutores extends React.Component{
-    constructor(props) {
-        super(props);
-        // reference to the DOM node
-       // this.myElement = this.Footer.path.value;
-       // console.log(this.myElement);
-        // reference to the animation
-        this.myElement = null;
-        this.myTween = null;
+    constructor() {
+        super();
+        
 
         this.state = {
             startDate: new Date(),
             endDate: new Date()
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleChange2 = this.handleChange2.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
+        // this.handleChange2 = this.handleChange2.bind(this);
     }
 
     handleChange(date) {
@@ -54,11 +54,14 @@ class ListaCondutores extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        console.log('THIS', this.props);
-        const articles = this.props.viagems;
+        this.props.fetchViagems({ type: "FETCH_VIAGEMS", viagems: this.props.history.location.state.state });
+
+        console.log('THIS2', this.props.viagems);
     }
 
     render (){
+        const viagens = this.props.viagems;
+        console.log('TESTE', viagens);
         return(
             <div className="container-fluid h-100 p-0">
                 <MenuPath />
@@ -175,5 +178,5 @@ class ListaCondutores extends React.Component{
     }
 }
 
-const ListaCondutoresExp = connect(null, mapDispatchToProps)(ListaCondutores);
+const ListaCondutoresExp = connect(mapStateToProps, mapDispatchToProps)(ListaCondutores);
 export default ListaCondutoresExp;

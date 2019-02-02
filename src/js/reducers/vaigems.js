@@ -1,4 +1,4 @@
-import { ADD_VIAGEM, VIAGEMS_FETCH_SUCCESS } from "../constants/action-types";
+import { ADD_VIAGEM, VIAGEMS_FETCH_SUCCEEDED } from "../constants/action-types";
 
 const initialState = {
   viagems: []
@@ -9,7 +9,7 @@ const rootReducer = (state = initialState, action) => {
       console.log('criar artigo');
       window.location.reload();
       // return { ...state, articles: [...state.articles, action.payload] };
-    case VIAGEMS_FETCH_SUCCESS:
+    case VIAGEMS_FETCH_SUCCEEDED:
       console.log('success', action.payload);
       return { ...state, viagems: [...state.viagems, ...action.payload] };
     default:

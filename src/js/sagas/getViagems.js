@@ -3,19 +3,49 @@ import { FETCH_VIAGEMS, VIAGEMS_FETCH_SUCCEEDED, VIAGEMS_FETCH_ERROR } from '../
 import {ENDPOINT} from "../constants/services"
 
 // função para obter os dados da API em formato JSON
-function fetchAll() {
-    return fetch(ENDPOINT+'viagem').then(response => response.json(), );
-}
+function fetchAll(viagems) {
+    const date = viagems.payload.viagems.dataViagem;
+    const dateBody = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+    const horaInicio = viagems.payload.viagems.horaInicio;
+    const horaInicioBody = horaInicio.getHours() + ":" + horaInicio.getMinutes();
+    const horaFim = viagems.payload.viagems.horaFim;
+    const horaFimBody = horaFim.getHours() + ":" + horaFim.getMinutes();
+    console.log('response', JSON.stringify({
+        origem: viagems.payload.viagems.origem,
+        destino: viagems.payload.viagems.destino,
+        data: dateBody,
+        horaInicio: horaInicioBody,
+        horaFim: horaFimBody,
+        
+    }));
+    
 
-// worker Saga: irá ser invocada quando ocorrer um FETCH_PRODUTOS action
-function* fetchViagems() {
+    return fetch(ENDPOINT+'viagem/search',{
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          origem: viagems.payload.viagems.origem,
+          destino: viagems.payload.viagems.destino,
+          data: dateBody,
+          horaInicio: horaInicioBody,
+          horaFim: horaFimBody,
+        })
+      }).then(response => response.json(), );
+    }
+
+function* fetchViagems(viagems) {
+
     try {
-        // invocar a função para obter a lista de produtos
-        const viagems = yield call(fetchAll);
-        // assim que houver uma resposta da API, invoca a action, enviado os novos produtos obtidos
-        yield put({type: VIAGEMS_FETCH_SUCCEEDED, payload: viagems});
+        const search = yield call(fetchAll, viagems);
+        const viagens = search.listaViagens;
+        yield put({type: VIAGEMS_FETCH_SUCCEEDED, payload: viagens});
+        console.log('aqui', search.listaViagens);
     } catch (e) {
         // caso exista um erro, devolve a mensagem de erro
+        console.log('erro', e);
         yield put({type: VIAGEMS_FETCH_ERROR, message: e.message});
     }
 }
@@ -25,7 +55,7 @@ function* fetchViagems() {
   Caso ocorram múltiplas chamadas irá ignorar todas à excepção da última
 */
 function* mySagaViagems() {
-    console.log('produtos saga init');
+    console.log('search viagem saga init');
     yield takeLatest(FETCH_VIAGEMS, fetchViagems);
 }
 

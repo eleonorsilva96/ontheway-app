@@ -39,7 +39,6 @@ class Viagem extends React.Component{
         this.handleChange3 = this.handleChange3.bind(this);
         this.handleChange4 = this.handleChange4.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     handleChange2(date) {
@@ -152,7 +151,7 @@ class Viagem extends React.Component{
                                     <select id="tamanho" value={tamanho} onChange={this.handleChange} className="custom-select custom-select-lg col-5 m-2 font-weight-normal">
                                         <option value="grande">Grande&nbsp;(até 50kg)</option>
                                         <option value="medio">Médio&nbsp;(até 30kg)</option>
-                                        <option value="pequeno">Pequeno&nbsp;(até 10kg</option>
+                                        <option value="pequeno">Pequeno&nbsp;(até 10kg)</option>
                                     </select>
                                     <input type="text" placeholder="€" id="preco" value={preco} onChange={this.handleChange} className="col-2 m-2 form-control-lg text-center"/>
                                     <span className="col-2">
