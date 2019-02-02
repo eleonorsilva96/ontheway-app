@@ -35,7 +35,7 @@ function* addNewProduto(produto){
 }
 
 function* mySagaProdutoPOST(){
-  console.log('article saga POST');
+  console.log('produto saga POST');
   yield takeLatest(ADD_PRODUTO, addNewProduto);
 }
 

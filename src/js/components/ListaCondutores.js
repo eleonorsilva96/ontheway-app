@@ -13,6 +13,15 @@ import MenuPath from "./MenuPath";
 registerLocale('pt', pt);
 setDefaultLocale('pt');
 
+import { connect } from "react-redux";
+import { fetchViagems } from "../actions/viagems";
+
+const mapDispatchToProps = dispatch => {
+    return {
+      fetchViagems: () => dispatch(fetchViagems()),
+    };
+};
+
 class ListaCondutores extends React.Component{
     constructor(props) {
         super(props);
@@ -45,7 +54,8 @@ class ListaCondutores extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTween = TweenLite.to(this.myElement, 1, {ease:Power3.easeOut,autoAlpha:0}, '-=900');
+        console.log('THIS', this.props);
+        const articles = this.props.viagems;
     }
 
     render (){
@@ -165,4 +175,5 @@ class ListaCondutores extends React.Component{
     }
 }
 
-export default ListaCondutores;
+const ListaCondutoresExp = connect(null, mapDispatchToProps)(ListaCondutores);
+export default ListaCondutoresExp;
