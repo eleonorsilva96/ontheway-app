@@ -13,19 +13,34 @@ import MenuPath from "./MenuPath";
 registerLocale('pt', pt);
 setDefaultLocale('pt');
 
+import { connect } from "react-redux";
+import { fetchViagem } from "../actions/viagems";
+
+const mapStateToProps = state => {
+
+    return { viagem: state.viagem };
+  };
+
+const mapDispatchToProps = dispatch => {
+    return {
+      fetchViagem: viagem => dispatch(fetchViagem(viagem)),
+    };
+};
+
 class Condutor extends React.Component{
     constructor(props) {
         super(props);
-        this.myElement = null;
-        this.myTween = null;
     }
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTween = TweenLite.to(this.myElement, 1, {ease:Power3.easeOut, autoAlpha:0}, '-=200');
+        const id = this.props.match.params.id;
+        this.props.fetchViagem({ type: "FETCH_VIAGEM", viagem: id });
     }
 
     render (){
+        const viagem = this.props.viagem.viagemInfo;
+        console.log('VIAGEM',viagem);
         return(
             <div className="container-fluid h-100 p-0">
                 <MenuPath />
@@ -34,13 +49,13 @@ class Condutor extends React.Component{
 
                         <div className="row d-flex justify-content-center align-items-center">
                             <div className="col-4 d-flex flex-column align-items-center">
-                                <h5 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">Produto<span className="h6 pl-1" id="num-produto">03</span></h5>
+                                <h5 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">Produto<span className="h6 pl-1" id="num-produto">{viagem.id}</span></h5>
                                 <h3 id="nome-produto" className="h3 d-flex text-uppercase align-items-center font-weight-bold primary-text">Poltrona</h3>
                                 <h6 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">(<span id="tamanho-produto">grande</span>)</h6>
                             </div>
                             <div className="col-4 d-flex flex-column align-items-center align-self-start">
                                 <h5 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">Preço</h5>
-                                <h3 className=" h3 d-flex text-uppercase align-items-center font-weight-bold primary-text"><span id="preco-produto">15</span>€</h3>
+                                <h3 className=" h3 d-flex text-uppercase align-items-center font-weight-bold primary-text"><span id="preco-produto">{viagem.preco}</span>€</h3>
                             </div>
                         </div>
 
@@ -48,22 +63,22 @@ class Condutor extends React.Component{
                             <div className="col-6 d-flex flex-column justify-content-start align-items-start">
                                 <div className="d-flex row align-items-center pb-3">
                                     <label className="font-weight-bold gray-text">De</label>
-                                    <div id="origem" className="h6 ml-3 primary-3-text">IKEA, Porto</div>
+                                    <div id="origem" className="h6 ml-3 primary-3-text">{viagem.origem}</div>
                                 </div>
                                 <div className="d-flex row align-items-center">
                                     <label className="font-weight-bold gray-text">Para</label>
-                                    <div className="h6 ml-3 primary-3-text" id="destino">Campus Santiago, Aveiro</div></div>
+                                    <div className="h6 ml-3 primary-3-text" id="destino">{viagem.destino}</div></div>
                             </div>
                             <div className="col-4 pl-5 pr-0 d-flex flex-column justify-content-between align-items-between">
                                 <div className="d-flex row pb-2 align-items-center pb-3">
                                     <label className="icon-time mr-1">
                                     </label>
-                                    <div className="h6 primary-3-text" id="tempo"><span id="inicio">19:00</span>-<span id="fim">20:00</span></div>
+                                    <div className="h6 primary-3-text" id="tempo"><span id="inicio">{viagem.horaInicio}</span>-<span id="fim">{viagem.horaFim}</span></div>
                                 </div>
                                 <div className="d-flex row align-items-center">
                                     <label className="icon-calender mr-1">
                                     </label>
-                                    <div className="h6 primary-3-text" id="data">19/12/18</div></div>
+                                    <div className="h6 primary-3-text" id="data">{viagem.data}</div></div>
                             </div>
                         </div>
 
@@ -122,4 +137,5 @@ class Condutor extends React.Component{
     }
 }
 
-export default Condutor;
+const CondutorExp = connect(mapStateToProps, mapDispatchToProps)(Condutor);
+export default CondutorExp;

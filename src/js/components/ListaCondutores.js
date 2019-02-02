@@ -58,7 +58,7 @@ class ListaCondutores extends React.Component{
         // if(viagens == 0){
             this.props.fetchViagems({ type: "FETCH_VIAGEMS", viagems: this.props.history.location.state.state });
         // }
-        console.log('THIS2', viagens);
+        console.log('THIS', viagens);
     }
 
     render (){
