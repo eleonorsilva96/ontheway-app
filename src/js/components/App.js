@@ -14,6 +14,7 @@ import Homepage from "./Homepage";
 import Entrar from "./Entrar";
 import Registar from "./Registar";
 import Perfil from "./Perfil";
+import Pagamento from "./Pagamento";
 
 
 const loader = document.querySelector('.loader');
@@ -44,6 +45,7 @@ class App extends React.Component {
                         <Route exact path='/viagem/' component={ Viagem }  />
                         <Route exact path='/condutores/' component={ Condutores }  />
                         <Route exact path='/condutor/' component={ Condutor }  />
+                        <Route exact path='/pagamento/' component={ Pagamento }  />
                         <Route exact path='/review/' component={ Review }  />
                     </Switch>
                 </div>

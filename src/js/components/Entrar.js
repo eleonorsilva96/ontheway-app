@@ -20,19 +20,18 @@ class Entrar extends React.Component{
                         <form>
                             <div className="spacing-top row justify-content-center">
                                 <label className="mr-3 mb-0 align-self-center gray-text">E-mail</label>
-                                <input type="email" placeholder="E-mail" className="w-50 m-2 form-control-lg" required/>
+                                <input type="email" placeholder="E-mail" className="w-50 m-2 form-control-lg"/>
                             </div>
                             <div className="row justify-content-center mr-4 pl-3"><label
                                 className="mr-3 mb-0 align-self-center gray-text">Password</label>
-                                <input type="password" placeholder="Password" className="input-width-entrar m-2 form-control-lg" required/>
+                                <input type="password" placeholder="Password" className="input-width-entrar m-2 form-control-lg"/>
                             </div>
                             <div className="spacing-bottom spacing-top-b row justify-content-center align-self-center">
-                                <button type="submit" className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
+                                <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
                                     <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/home/">Entrar</Link>
-                                </button>
+                                </div>
                             </div>
                         </form>
-                        <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/home/">Entrar</Link>
                         <h5 className="font-size-entrar line-height-entrar text-center gray-text font-weight-normal h4">Já registou uma conta?<br/>
                             <span className="letter-spacing-entrar primary-text text-uppercase font-weight-bold"> <Link className="link-no-decoration" to="/registar/">Registar</Link></span>
                         </h5>

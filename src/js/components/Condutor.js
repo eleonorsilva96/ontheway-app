@@ -105,7 +105,7 @@ class Condutor extends React.Component{
 
                                         <div className="mt-4 mb-4 row justify-content-center align-self-center">
                                             <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                                <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/review/">
+                                                <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/pagamento/">
                                                     Aceitar
                                                 </Link> </div>
                                         </div>
