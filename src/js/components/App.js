@@ -2,9 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import Pedido from "./Pedido";
-
-import Menu from "./MenuPath";
-import Footer from "./FooterPath";
 import Stage from "./Stage";
 import Viagem from "./Viagem";
 import Condutores from "./ListaCondutores";
@@ -15,6 +12,7 @@ import Entrar from "./Entrar";
 import Registar from "./Registar";
 import Perfil from "./Perfil";
 import Pagamento from "./Pagamento";
+import Atividade from "./Atividade";
 
 
 const loader = document.querySelector('.loader');
@@ -46,6 +44,7 @@ class App extends React.Component {
                         <Route exact path='/condutores/' component={ Condutores }  />
                         <Route exact path='/condutor/' component={ Condutor }  />
                         <Route exact path='/pagamento/' component={ Pagamento }  />
+                        <Route exact path='/atividade/' component={ Atividade }  />
                         <Route exact path='/review/' component={ Review }  />
                     </Switch>
                 </div>

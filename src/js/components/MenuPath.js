@@ -1,8 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Grid, Row, Col } from 'react-bootstrap';
-import ImageUpload from "./ImageUpload";
-import Image from "./Image";
 
 import '../../main.css';
 
@@ -21,7 +18,7 @@ const MenuPath = props => {
                         </div>
                     </Link>
                 </div>
-                <div className="path align-self-center">
+                <div ref={props.pathRef} className="path align-self-center">
                 </div>
                 <div className="background white shadow align-self-center">
 

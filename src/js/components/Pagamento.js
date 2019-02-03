@@ -26,7 +26,7 @@ class Pagamento extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTweenPath = TweenLite.to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0});
+        this.myTweenPath = TweenLite.to(this.myElementPath, 0.1, {ease:Power3.easeOut, autoAlpha:0});
     }
 
     render (){
@@ -100,7 +100,7 @@ class Pagamento extends React.Component{
                                         <input type="text" placeholder="Nºtelemóvel" id="telemovel" className="m-2 input-telemovel form-control-lg" required/>
                                         <div className="mt-4 mb-4 row justify-content-center align-self-center">
                                             <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                                <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/pagamento/">
+                                                <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/atividade/">
                                                     Pagar
                                                 </Link> </div>
                                         </div>

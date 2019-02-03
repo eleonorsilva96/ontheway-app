@@ -59,6 +59,14 @@ button{
     border: 0;
 }
 
+.pointer{
+    cursor: pointer;
+}
+
+.absolute{
+    position: absolute;
+}
+
 .h-36{
     height: 36%;
 }
@@ -404,6 +412,11 @@ Colors - background
 .menu{
     height: 55px;
     position: relative;
+}
+
+.menu-abs{
+    height: 55px;
+    position: absolute;
 }
 
 /*
@@ -866,4 +879,27 @@ Colors - background
 
 .input-telemovel{
     width: 196px;
+}
+
+/*
+* Atividade
+ */
+
+.z-index{
+    z-index: -1;
+    position: relative;
+}
+
+#pedidos{
+    display: block;
+    opacity: 1;
+    position: absolute;
+    width: 100%;
+}
+
+#viagens{
+    display: none;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
 }
