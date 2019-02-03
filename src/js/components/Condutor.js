@@ -15,6 +15,7 @@ setDefaultLocale('pt');
 
 import { connect } from "react-redux";
 import { fetchViagem } from "../actions/viagems";
+import { addProduto } from "../actions/produtos";
 
 const mapStateToProps = state => {
 
@@ -24,12 +25,25 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
       fetchViagem: viagem => dispatch(fetchViagem(viagem)),
+      addProduto: produto => dispatch(addProduto(produto)),
     };
 };
 
 class Condutor extends React.Component{
     constructor(props) {
         super(props);
+        console.log('AQUI',this);
+        const produto = this.props.history.location.state.produto;
+        const viagem = this.props.match.params.id;
+
+        this.state = {
+            nome: produto.nomeProduto,
+            tamanho: produto.tamanho,
+            viagem: viagem,
+            
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount(){
@@ -37,6 +51,20 @@ class Condutor extends React.Component{
         const id = this.props.match.params.id;
         this.props.fetchViagem({ type: "FETCH_VIAGEM", viagem: id });
         console.log('INFO', this.props.history.location.state.produto);
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        console.log('THIS', this);
+        
+        const { nome } = this.state;
+        const { tamanho } = this.state;
+        const { viagem } = this.state;
+
+        this.props.addProduto({ nome, tamanho, viagem });
+        this.setState({ nome: "" , produto: "", viagem: "" });
+
+        this.props.history.push('/pagamento');
     }
 
     render (){
@@ -126,9 +154,16 @@ class Condutor extends React.Component{
 
                                         <div className="mt-4 mb-4 row justify-content-center align-self-center">
                                             <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                                <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/pagamento/">
+                                                {/* <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/pagamento/">
                                                     Aceitar
-                                                </Link> </div>
+                                                </Link>  */}
+                                                <br></br><br></br>
+                                                <form onSubmit={this.handleSubmit}>
+                                                <button type="submit" className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold">
+                                                    Aceitar
+                                                </button>
+                                                </form>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>

@@ -3,10 +3,12 @@ import { PRODUTOS_FETCH_ERROR, ADD_PRODUTO } from '../constants/action-types';
 import { ENDPOINT } from '../constants/services';
 
 function addProdutoPOST(produto){
+  console.log('ERROR AQUI', produto);
   console.log('response', JSON.stringify({
-    // title: produto.payload.title,
-    // description: article.payload.description,
-    // user_id: 0,
+    nome: produto.payload.nome,
+    tamanho: produto.payload.tamanho,
+    viagems_id: produto.payload.viagem,
+    user_id: 1
   }));
   return fetch(ENDPOINT+'produto',{
     method: 'POST',
@@ -15,10 +17,11 @@ function addProdutoPOST(produto){
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      // title: article.payload.title,
-      // description: article.payload.description,
-      // user_id: 0,
-    })
+      nome: produto.payload.nome,
+      tamanho: produto.payload.tamanho,
+      viagems_id: produto.payload.viagem,
+      user_id: 1
+  })
   }).then(response => response.json(), );
 }
 
@@ -26,8 +29,8 @@ function* addNewProduto(produto){
   console.log('POST', produto);
   try{
     const produtos = yield call(addProdutoPOST, produto);
-     //yield put({type: ARTICLES_FETCH_SUCCEEDED, payload: articles});
-    console.log('success POST');
+    yield put({type: ADD_PRODUTO});
+    console.log('success POST', produtos);
   } catch(e){
     console.log('Error', e);
     yield put({type: PRODUTOS_FETCH_ERROR, message: e.message});

@@ -9,7 +9,7 @@ const rootReducer = (state = initialState, action) => {
       console.log('CRIAR VIAGEM');
       // return { ...state, articles: [...state.articles, action.payload] };
     case VIAGEMS_FETCH_SUCCEEDED:
-      console.log('SUCCESS', action.payload);
+      console.log('SUCCESS VIAGENS', action.payload);
       return { ...state, viagems: [...state.viagems, ...action.payload] };
     default:
       return state;
