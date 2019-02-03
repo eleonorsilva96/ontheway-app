@@ -102,6 +102,10 @@ button{
     --box-shadow-color: #1220DC;
 }
 
+.inherit{
+    width: inherit;
+}
+
 .path{
     background: url("/svg/path.svg") no-repeat center;
     background-size: 101%;
@@ -330,7 +334,7 @@ Colors - background
 
 .background-white-review{
     border: 1px solid #1220DC;
-    height: 60%;
+    height: 80%;
 }
 
 .white{
@@ -816,4 +820,50 @@ Colors - background
 .previewComponent-xs {
     width: 40px;
     height: 40px;
+}
+
+/*
+* Pagamento
+ */
+
+.pagamento{
+    width: 200px;
+}
+
+.pagamento-div{
+    display: flex;
+}
+
+.mbway{
+    background: url("/imgs/mbway.png") no-repeat center;
+    background-size: contain;
+    width: 82px;
+    height: 52px;
+}
+
+.mb{
+    background: url("/imgs/mb.png") no-repeat center;
+    background-size: contain;
+    width: 52px;
+    height: 51px;
+}
+
+.paypal{
+    background: url("/imgs/paypal.png") no-repeat center;
+    background-size: contain;
+    width: 51px;
+    height: 59px;
+}
+
+.telemovel{
+    opacity: 0;
+    display: none;
+}
+
+.padding-bottom-pagamento{
+    padding-bottom: 15rem;
+}
+
+.input-telemovel{
+    width: 196px;
 }
