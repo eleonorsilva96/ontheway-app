@@ -134,7 +134,7 @@ class ListaCondutores extends React.Component{
 
                         {viagens.viagems.map((el, index) => (
 
-                            <Link className="link-no-decoration" to={'/condutor/'+el.id}>
+                            <Link className="link-no-decoration" to={{pathname: '/condutor/'+el.id, state: { produto: this.props.history.location.state.state } }} >
                             <div className="d-flex justify-content-start align-items-center p-2 m-2 row white rounded shadow">
 
                                 <div className="m-3 previewComponent-md">

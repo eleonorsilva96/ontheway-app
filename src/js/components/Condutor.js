@@ -36,11 +36,13 @@ class Condutor extends React.Component{
         // use the node ref to create the animation
         const id = this.props.match.params.id;
         this.props.fetchViagem({ type: "FETCH_VIAGEM", viagem: id });
+        console.log('INFO', this.props.history.location.state.produto);
     }
 
     render (){
         const viagem = this.props.viagem.viagemInfo;
-        console.log('VIAGEM',viagem);
+        const produto = this.props.history.location.state.produto;
+        console.log('VIAGEM',this);
         if(viagem.user)
         {
         return(
@@ -52,8 +54,8 @@ class Condutor extends React.Component{
                         <div className="row d-flex justify-content-center align-items-center">
                             <div className="col-4 d-flex flex-column align-items-center">
                                 <h5 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">Produto</h5>
-                                <h3 id="nome-produto" className="h3 d-flex text-uppercase align-items-center font-weight-bold primary-text">Poltrona</h3>
-                                <h6 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">(<span id="tamanho-produto">grande</span>)</h6>
+                                <h3 id="nome-produto" className="h3 d-flex text-uppercase align-items-center font-weight-bold primary-text">{produto.nomeProduto}</h3>
+                                <h6 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">(<span id="tamanho-produto">{produto.tamanho}</span>)</h6>
                             </div>
                             <div className="col-4 d-flex flex-column align-items-center align-self-start">
                                 <h5 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">Preço</h5>
