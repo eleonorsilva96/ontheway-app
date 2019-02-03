@@ -26,7 +26,7 @@ class Pagamento extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTweenPath = TweenLite.to(this.myElementPath, 0.1, {ease:Power3.easeOut, autoAlpha:0});
+        this.myTweenPath = TweenLite.to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0});
     }
 
     render (){

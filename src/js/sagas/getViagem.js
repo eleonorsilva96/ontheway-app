@@ -9,10 +9,11 @@ function fetchDetail(id){
 
 function* fetchViagem(action){
     const id = action.payload.viagem;
+    console.log('action', action);
     try{
         const viagem = yield call(fetchDetail, id);
         yield put({type: VIAGEM_FETCH_SUCCEEDED, payload: viagem});
-        console.log('success try catch of one viagem');
+        console.log('success try catch of one viagem', viagem);
     } catch(e){
         console.log(e);
         yield put({type: VIAGEM_FETCH_ERROR, message: e.message});

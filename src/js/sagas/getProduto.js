@@ -11,7 +11,7 @@ function* fetchProduto(action){
     const id = action.payload.produto;
     try{
         const produto = yield call(fetchDetail, id);
-        yield put({type: Produto_FETCH_SUCCEEDED, payload: produto});
+        yield put({type: PRODUTO_FETCH_SUCCEEDED, payload: produto});
         console.log('success try catch of one produto');
     } catch(e){
         console.log(e);

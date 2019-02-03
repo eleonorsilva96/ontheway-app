@@ -31,7 +31,14 @@ class Entrar extends React.Component{
                                     <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/home/">Entrar</Link>
                                 </div>
                             </div>
+
+
+                            <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/home/">Entrar</Link>
+
                         </form>
+
+                        
+
                         <h5 className="font-size-entrar line-height-entrar text-center gray-text font-weight-normal h4">Já registou uma conta?<br/>
                             <span className="letter-spacing-entrar primary-text text-uppercase font-weight-bold"> <Link className="link-no-decoration" to="/registar/">Registar</Link></span>
                         </h5>

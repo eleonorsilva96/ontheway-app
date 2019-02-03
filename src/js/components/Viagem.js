@@ -75,6 +75,8 @@ class Viagem extends React.Component{
         const tipo_id = 1;
         this.props.addViagem({ origem, destino, tamanho, preco, dataViagem, horaInicio, horaFim, tipo_id });
         this.setState({ origem: "" , destino: "", tamanho: "", preco: "", dataViagem: "", horaInicio: "", horaFim: ""});
+
+        this.props.history.push('/home');
     }
 
     render(){
