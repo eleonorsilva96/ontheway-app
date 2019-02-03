@@ -7,7 +7,6 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_VIAGEM:
       console.log('CRIAR VIAGEM');
-      window.location.reload();
       // return { ...state, articles: [...state.articles, action.payload] };
     case VIAGEMS_FETCH_SUCCEEDED:
       console.log('SUCCESS', action.payload);

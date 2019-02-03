@@ -51,7 +51,7 @@ class Condutor extends React.Component{
 
                         <div className="row d-flex justify-content-center align-items-center">
                             <div className="col-4 d-flex flex-column align-items-center">
-                                <h5 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">Produto<span className="h6 pl-1" id="num-produto">{viagem.id}</span></h5>
+                                <h5 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">Produto</h5>
                                 <h3 id="nome-produto" className="h3 d-flex text-uppercase align-items-center font-weight-bold primary-text">Poltrona</h3>
                                 <h6 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">(<span id="tamanho-produto">grande</span>)</h6>
                             </div>
@@ -102,12 +102,14 @@ class Condutor extends React.Component{
                                                 <span id="nr-viagens" className="h5 primary-text font-weight-bold">{viagem.user.totalViagens}</span>
                                             </div>
                                         </div>
+{/*                                         
                                         <div className="d-flex m-3 flex-column align-items-center">
                                             <h5 className="h4 pb-3 text-uppercase font-weight-bold text-center">amigos<br/>em comum</h5>
                                             <div className="circle-size d-flex align-items-center justify-content-center rounded-circle white shadow">
                                                 <span id="nr-amigos" className="h5 primary-text font-weight-bold">6</span>
                                             </div>
-                                        </div>
+                                        </div> */}
+
                                         <div className="pl-5 pt-2 d-flex flex-column align-items-center">
                                             <div className="row align-items-center align-self-start">
                                                 <h5 className="text-uppercase align-items-center font-weight-bold primary-text">{viagem.user.name}</h5>
