@@ -33,7 +33,7 @@ class Entrar extends React.Component{
                             </div>
 
 
-                            <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/atividade/">Entrar</Link>
+                            <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/home/">Entrar</Link>
 
                         </form>
 

@@ -144,10 +144,10 @@ class ListaCondutores extends React.Component{
 
                                 <div className="col-5 column">
                                     <div className="row d-flex align-items-center">
-                                        <h5 className="d-flex text-uppercase align-items-center font-weight-bold primary-text">{el.name}</h5>
+                                        <h5 className="d-flex text-uppercase align-items-center font-weight-bold primary-text">{el.user[0].name}</h5>
                                         <div className="icon-star">
                                         </div>
-                                        <span id="review" className="font-weight-bold">{el.nota}</span>
+                                        <span id="review" className="font-weight-bold">{el.user[0].nota}</span>
                                     </div>
                                     <div className="row mt-2">
                                         <div className="date-icon">
