@@ -6,7 +6,7 @@ import produto from "../reducers/produto";
 import produtos from "../reducers/produtos";
 import viagem from "../reducers/viagem";
 import viagems from "../reducers/viagems";
-import user from "../reducers/users";
+import userInfo from "../reducers/users";
 import review from "../reducers/review";
 
 
@@ -22,7 +22,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
     // caso exista mais do que 1 reducer, usar esta função para "combiná-los"
   combineReducers({
-    produto, produtos, viagem, viagems, user, review
+    produto, produtos, viagem, viagems, userInfo, review
   }),
     // associar o saga à store do Redux
     applyMiddleware(sagaMiddleware)

@@ -12,7 +12,7 @@ function* fetchUser(action){
   try{
     const user = yield call(fetchDetail, id);
     yield put({type: USER_FETCH_SUCCESS, payload: user});
-    console.log('success try catch of one user');
+    console.log('success try catch of one user', user);
   } catch(e){
     console.log(e);
     yield put({type: USER_FETCH_ERROR, message: e.message});

@@ -19,7 +19,7 @@ import { fetchViagems } from "../actions/viagems";
 const mapStateToProps = state => {
 
     return { viagems: state.viagems };
-  };
+};
 
 const mapDispatchToProps = dispatch => {
     return {

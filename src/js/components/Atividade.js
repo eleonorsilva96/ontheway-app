@@ -6,10 +6,23 @@ import '../../main.css';
 import FooterPath from "./FooterPath";
 import MenuPath from "./MenuPath";
 
+import { connect } from "react-redux";
+import { fetchUser } from "../actions/userData";
+
+const mapStateToProps = state => {
+
+    return { userInfo: state.userInfo };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchUser: userInfo => dispatch(fetchUser(userInfo)),
+    };
+};
 
 class Atividade extends React.Component{
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.myElementPathTop = null;
         this.myElementPathBottom = null;
         this.myElementColor = null;
@@ -28,11 +41,13 @@ class Atividade extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTween
-            .to(this.myElementPathTop, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
-            .to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
-            .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
-        ;
+        // this.myTween
+        //     .to(this.myElementPathTop, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
+        //     .to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
+        //     .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
+        // ;
+
+        this.props.fetchUser({ type: "FETCH_USER", user: 1 });
     }
 
     handleClickViagem() {
@@ -58,6 +73,10 @@ class Atividade extends React.Component{
     }
 
     render (){
+        console.log('QUERO ISTO', this.props);
+        const userInfo = this.props.userInfo.userInfo;
+
+        if(userInfo.produtos || userInfo.viagems){
         return(
             <div className="container-fluid h-100 p-0">
                 <MenuPath id="pathTop" pathRef={div => this.myElementPathTop = div} />
@@ -68,22 +87,25 @@ class Atividade extends React.Component{
                     <div id="menu-viagem" ref={div => this.myElementColorViagem = div} onClick={this.handleClickViagem.bind(this)}  className="p-2 primary-gray text-uppercase pointer gray-text font-weight-bold">viagens</div>
                 </div>
                 <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
+                    
+                
                     <div className="container-fluid mt-5 pt-2">
                         <Link className="link-no-decoration" to="/atividade-detalhe/">
                             <div ref={div => this.pedido = div} id="pedidos">
+                                {userInfo.produtos.map((el, index) => (
+
                                <div className="d-flex justify-content-start align-items-center p-2 m-2 row white rounded shadow">
 
                                    <div className="m-3 previewComponent-md">
                                        <div id="image-default" className="image-default">
                                        </div>
                                    </div>
-
                                    <div className="col-5 column">
                                        <div className="row d-flex align-items-center">
-                                            <h5 className="d-flex text-uppercase align-items-center font-weight-bold primary-text">Zé Pedro</h5>
+                                            <h5 className="d-flex text-uppercase align-items-center font-weight-bold primary-text">{el.nome}</h5>
                                             <div className="icon-star">
                                             </div>
-                                            <span id="review" className="font-weight-bold">3.5</span>
+                                            {/* <span id="review" className="font-weight-bold">3.5</span> */}
                                        </div>
                                        <div className="row mt-2">
                                            <div className="date-icon">
@@ -110,8 +132,11 @@ class Atividade extends React.Component{
                                        <h4 className="font-weight-bold"><span id="price">15</span>€</h4>
                                    </div>
                                </div>
+                               ))}
                             </div>
+                            
                             <div ref={div => this.viagem = div} id="viagens">
+                                {userInfo.viagems.map((el, index) => (
                                 <div className="d-flex justify-content-start align-items-center p-2 m-2 row white rounded shadow">
 
                                     <div className="m-3 previewComponent-md">
@@ -129,18 +154,18 @@ class Atividade extends React.Component{
                                         <div className="row mt-2">
                                             <div className="date-icon">
                                             </div>
-                                            <span id="date">15/11/18</span>
+                                            <span id="date">{el.data}</span>
                                         </div>
                                         <div className="row">
                                             <div className="time-icon">
                                             </div>
-                                            <span id="time">19:00-20:00</span>
+                                            <span id="time">{el.horaInicio}-{el.horaFim}</span>
                                         </div>
                                     </div>
 
                                     <div className="column">
-                                        <h6 className="text-uppercase font-weight-bold primary-2-text">Aveiro</h6>
-                                        <h6 className="pt-5 text-uppercase font-weight-bold primary-2-text">Porto</h6>
+                                        <h6 className="text-uppercase font-weight-bold primary-2-text">{el.origem}</h6>
+                                        <h6 className="pt-5 text-uppercase font-weight-bold primary-2-text">{el.destino}</h6>
                                     </div>
 
                                     <div className="location-img">
@@ -150,54 +175,28 @@ class Atividade extends React.Component{
                                     <div className="ml-1 price d-flex justify-content-center align-items-center">
                                         <h4 className="font-weight-bold"><span id="price">15</span>€</h4>
                                     </div>
-                                </div>
-                                <div className="d-flex justify-content-start align-items-center p-2 m-2 row white rounded shadow">
-
-                                    <div className="m-3 previewComponent-md">
-                                        <div id="image-default" className="image-default">
-                                        </div>
-                                    </div>
-
-                                    <div className="col-5 column">
-                                        <div className="row d-flex align-items-center">
-                                            <h5 className="d-flex text-uppercase align-items-center font-weight-bold primary-text">Zé Pedro</h5>
-                                            <div className="icon-star">
-                                            </div>
-                                            <span id="review" className="font-weight-bold">3.5</span>
-                                        </div>
-                                        <div className="row mt-2">
-                                            <div className="date-icon">
-                                            </div>
-                                            <span id="date">15/11/18</span>
-                                        </div>
-                                        <div className="row">
-                                            <div className="time-icon">
-                                            </div>
-                                            <span id="time">19:00-20:00</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="column">
-                                        <h6 className="text-uppercase font-weight-bold primary-2-text">Aveiro</h6>
-                                        <h6 className="pt-5 text-uppercase font-weight-bold primary-2-text">Porto</h6>
-                                    </div>
-
-                                    <div className="location-img">
-
-                                    </div>
-
-                                    <div className="ml-1 price d-flex justify-content-center align-items-center">
-                                        <h4 className="font-weight-bold"><span id="price">15</span>€</h4>
-                                    </div>
-                                </div>
+                                    
+                                </div>                                
+                                ))}
+                                
                             </div>
                         </Link>
                     </div>
+                
+
                 </div>
                 <FooterPath pathRef={div => this.myElementPathBottom = div} />
             </div>
         );
     }
+    else {
+        return(
+            <div>Loading....</div>
+          )
+    }
+    }
 }
 
-export default Atividade;
+const AtividadeExp = connect(mapStateToProps, mapDispatchToProps)(Atividade);
+export default AtividadeExp;
+
