@@ -28,9 +28,11 @@ const mapDispatchToProps = dispatch => {
 };
 
 class ListaCondutores extends React.Component{
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         
+        this.myElement = null;
+        this.myTween = null;
 
         this.state = {
             startDate: new Date(),

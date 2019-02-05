@@ -32,6 +32,10 @@ const mapDispatchToProps = dispatch => {
 class Condutor extends React.Component{
     constructor(props) {
         super(props);
+
+        this.myElement = null;
+        this.myTween = null;
+
         console.log('AQUI',this);
         const produto = this.props.history.location.state.produto;
         const viagem = this.props.match.params.id;
