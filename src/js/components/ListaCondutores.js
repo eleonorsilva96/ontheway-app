@@ -54,6 +54,7 @@ class ListaCondutores extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
+        this.myTween = TweenLite.to(this.myElement, 1, {ease:Power3.easeOut, autoAlpha:0}, '-900');
         const viagens = this.props.viagems;
         // if(viagens == 0){
             this.props.fetchViagems({ type: "FETCH_VIAGEMS", viagems: this.props.history.location.state.state });
