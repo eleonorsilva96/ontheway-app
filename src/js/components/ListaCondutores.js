@@ -27,9 +27,11 @@ const mapDispatchToProps = dispatch => {
 };
 
 class ListaCondutores extends React.Component{
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         
+        this.myElement = null;
+        this.myTween = null;
 
         this.state = {
             startDate: new Date(),
@@ -53,6 +55,7 @@ class ListaCondutores extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
+        this.myTween = TweenLite.to(this.myElement, 1, {ease:Power3.easeOut, autoAlpha:0}, '-900');
         const viagens = this.props.viagems;
         // if(viagens == 0){
             this.props.fetchViagems({ type: "FETCH_VIAGEMS", viagems: this.props.history.location.state.state });

@@ -21,8 +21,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Atividade extends React.Component{
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.myElementPathTop = null;
         this.myElementPathBottom = null;
         this.myElementColor = null;
@@ -39,14 +39,13 @@ class Atividade extends React.Component{
         this.handleClickPedido = this.handleClickPedido.bind(this);
     }
 
-
     componentDidMount(){
         // use the node ref to create the animation
-       /* this.myTween
-            .to(this.myElementPathTop, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
-            .to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
-            .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
-        ;*/
+        // this.myTween
+        //     .to(this.myElementPathTop, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
+        //     .to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
+        //     .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
+        // ;
 
         this.props.fetchUser({ type: "FETCH_USER", user: 2 });
     }
@@ -104,8 +103,8 @@ class Atividade extends React.Component{
                                    <div className="col-5 column">
                                        <div className="row d-flex align-items-center">
                                             <h5 className="d-flex text-uppercase align-items-center font-weight-bold primary-text">{el.nome}</h5>
-                                            <div className="icon-star">
-                                            </div>
+                                            {/* <div className="icon-star">
+                                            </div> */}
                                             {/* <span id="review" className="font-weight-bold">3.5</span> */}
                                        </div>
                                        <div className="row mt-2">
@@ -147,10 +146,10 @@ class Atividade extends React.Component{
 
                                     <div className="col-5 column">
                                         <div className="row d-flex align-items-center">
-                                            <h5 className="d-flex text-uppercase align-items-center font-weight-bold primary-text">Zé Pedro</h5>
-                                            <div className="icon-star">
+                                            <h5 className="d-flex text-uppercase align-items-center font-weight-bold primary-text">{el.estado.estado}</h5>
+                                            {/* <div className="icon-star">
                                             </div>
-                                            <span id="review" className="font-weight-bold">3.5</span>
+                                            <span id="review" className="font-weight-bold">3.5</span> */}
                                         </div>
                                         <div className="row mt-2">
                                             <div className="date-icon">
