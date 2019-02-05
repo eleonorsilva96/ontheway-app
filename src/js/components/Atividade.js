@@ -47,7 +47,7 @@ class Atividade extends React.Component{
         //     .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
         // ;
 
-        this.props.fetchUser({ type: "FETCH_USER", user: 2 });
+        this.props.fetchUser({ type: "FETCH_USER", user: 3 });
     }
 
     handleClickViagem() {
@@ -191,7 +191,24 @@ class Atividade extends React.Component{
     }
     else {
         return(
-            <div>Loading....</div>
+            <div className="container-fluid h-100 p-0">
+                <MenuPath id="pathTop" pathRef={div => this.myElementPathTop = div} />
+                <div className="menu-abs p-1 absolute send-to-back d-flex justify-content-around bars white shadow">
+                </div>
+                <div className="menu p-1 bring-to-front d-flex justify-content-around bars">
+                    <div id="menu-pedido" ref={div => this.myElementColor = div} onClick={this.handleClickPedido.bind(this)} className="p-2 primary-gray text-uppercase pointer gray-text font-weight-bold">pedidos</div>
+                    <div id="menu-viagem" ref={div => this.myElementColorViagem = div} onClick={this.handleClickViagem.bind(this)}  className="p-2 primary-gray text-uppercase pointer gray-text font-weight-bold">viagens</div>
+                </div>
+                <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
+                    
+                
+                    <div className="container-fluid mt-5 pt-2">
+                    </div>
+                
+
+                </div>
+                <FooterPath pathFooter={div => this.myElementPathBottom = div} />
+            </div>
           )
     }
     }
