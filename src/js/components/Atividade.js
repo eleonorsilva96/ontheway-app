@@ -41,13 +41,13 @@ class Atividade extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        // this.myTween
-        //     .to(this.myElementPathTop, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
-        //     .to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
-        //     .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
-        // ;
+        this.myTween
+            .to(this.myElementPathTop, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
+            .to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
+            .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
+        ;
 
-        this.props.fetchUser({ type: "FETCH_USER", user: 1 });
+        this.props.fetchUser({ type: "FETCH_USER", user: 2 });
     }
 
     handleClickViagem() {
@@ -110,12 +110,12 @@ class Atividade extends React.Component{
                                        <div className="row mt-2">
                                            <div className="date-icon">
                                            </div>
-                                           <span id="date">15/11/18</span>
+                                           <span id="date">{el.viagems.data}</span>
                                        </div>
                                        <div className="row">
                                            <div className="time-icon">
                                            </div>
-                                           <span id="time">19:00-20:00</span>
+                                           <span id="time">{el.viagems.horaInicio}-{el.viagems.horaFim}</span>
                                        </div>
                                    </div>
 
@@ -129,7 +129,7 @@ class Atividade extends React.Component{
                                    </div>
 
                                    <div className="ml-1 price d-flex justify-content-center align-items-center">
-                                       <h4 className="font-weight-bold"><span id="price">15</span>€</h4>
+                                       <h4 className="font-weight-bold"><span id="price">{el.viagems.preco}</span>€</h4>
                                    </div>
                                </div>
                                ))}
@@ -173,7 +173,7 @@ class Atividade extends React.Component{
                                     </div>
 
                                     <div className="ml-1 price d-flex justify-content-center align-items-center">
-                                        <h4 className="font-weight-bold"><span id="price">15</span>€</h4>
+                                        <h4 className="font-weight-bold"><span id="price">{el.preco}</span>€</h4>
                                     </div>
                                     
                                 </div>                                
