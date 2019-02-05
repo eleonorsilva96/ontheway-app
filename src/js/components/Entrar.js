@@ -28,16 +28,15 @@ class Entrar extends React.Component{
                             </div>
                             <div className="spacing-bottom spacing-top-b row justify-content-center align-self-center">
                                 <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                    <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/home/">Entrar</Link>
+                                    <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/atividade/">Entrar</Link>
                                 </div>
                             </div>
-
-
-                            <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/atividade/">Entrar</Link>
+                            <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/atividade2/">Entrar</Link>
 
                         </form>
 
-                        
+                        <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/pagamento/">Entrar</Link>
+
 
                         <h5 className="font-size-entrar line-height-entrar text-center gray-text font-weight-normal h4">Já registou uma conta?<br/>
                             <span className="letter-spacing-entrar primary-text text-uppercase font-weight-bold"> <Link className="link-no-decoration" to="/registar/">Registar</Link></span>

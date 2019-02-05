@@ -159,7 +159,7 @@ class Perfil extends React.Component{
                             </div>
                     </div>
                 </div>
-                <FooterPath pathRef={div => this.myElement = div} />
+                <FooterPath pathFooter={div => this.myElement = div} />
             </div>
         );
     }

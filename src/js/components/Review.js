@@ -94,7 +94,7 @@ class Condutor extends React.Component{
 
                     </div>
                 </div>
-                <FooterPath pathRef={div => this.myElement = div} />
+                <FooterPath pathFooter={div => this.myElement = div} />
             </div>
         );
     }

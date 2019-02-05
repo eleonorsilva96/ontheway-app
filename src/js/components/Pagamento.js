@@ -3,37 +3,55 @@ import { Link } from "react-router-dom";
 import '../../main.css';
 import MenuPath from "./MenuPath";
 import FooterPath from "./FooterPath";
+import Feedback from "./Feedback";
 
 class Pagamento extends React.Component{
     constructor(props) {
         super(props);
         this.myElementPath = null;
+        this.myElementMenu = null;
         this.myElementDiv = null;
         this.myElementTelemovel = null;
+        this.myElementFeedback = null;
+        this.myElementPagamento = null;
 
-        this.myTweenPath = null;
         this.myTweenDiv = null;
         this.myTweenTelemovel = null;
 
+        this.myTweenPM = new TimelineLite();
+        this.myTweenFP = new TimelineLite();
+
+
         this.handleClick = this.handleClick.bind(this);
+        this.handleFeedback = this.handleFeedback.bind(this);
+    }
+
+    handleFeedback() {
+        this.myTweenFP
+            .to(this.myElementPagamento, 0.5, {ease:Power3.easeOut, autoAlpha:0, display:"none"}, "stage-no-photo-display")
+            .to(this.myElementFeedback, 1, {ease:Power3.easeOut, autoAlpha:1, display:"flex"}, "stage-no-photo-display")
+            .to(this.myElementPath, 0.1, {ease:Power3.easeOut, autoAlpha:1}, "stage-no-photo-display")
+        ;
     }
 
     handleClick() {
-        console.log("click");
         this.myTweenDiv = TweenLite.to(this.myElementDiv, 0.1, {ease:Power3.easeOut, display:"none"});
         this.myTweenTelemovel = TweenLite.to(this.myElementTelemovel, 1.5 , {ease:Power3.easeOut, autoAlpha:1, display:"block"}, '-=2');
     }
 
     componentDidMount(){
-        // use the node ref to create the animation
-        this.myTweenPath = TweenLite.to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0});
+        this.myTweenFP
+            .to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0})
+            .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0})
+        ;
     }
 
     render (){
         return(
-            <div className="container-fluid h-100 p-0">
+            <div className="container-fluid white-back h-100 p-0">
                 <MenuPath />
-                <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
+                <Feedback id="feedback-display" refFeedback={div => this.myElementFeedback = div}/>
+                <div id="stage-no-photo-display" ref={div => this.myElementPagamento = div} className="stage-no-photo white-back flex-column align-items-center justify-content-start">
                     <div className="container-fluid mt-2">
                         <div className="row d-flex justify-content-center align-items-center mt-1 mb-1 gray-text">
                             <div className="pt-5 mr-4 col-2 align-self-start d-flex flex-column align-items-center">
@@ -100,9 +118,9 @@ class Pagamento extends React.Component{
                                         <input type="text" placeholder="Nºtelemóvel" id="telemovel" className="m-2 input-telemovel form-control-lg" required/>
                                         <div className="mt-4 mb-4 row justify-content-center align-self-center">
                                             <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                                <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/atividade/">
+                                                <div onClick={this.handleFeedback.bind(this)} className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold">
                                                     Pagar
-                                                </Link> </div>
+                                                </div> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -111,7 +129,7 @@ class Pagamento extends React.Component{
 
                     </div>
                 </div>
-                <FooterPath pathRef={div => this.myElementPath = div} />
+                <FooterPath pathFooter={div => this.myElementPath = div} pathMenu={div => this.myElementMenu = div} />
             </div>
         );
     }

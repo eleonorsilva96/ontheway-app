@@ -3,7 +3,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../../main.css';
-import Image from "./Image";
 import DatePicker from "react-datepicker";
 import FooterPath from "./FooterPath";
 import "react-datepicker/dist/react-datepicker.css";
@@ -185,7 +184,7 @@ class ListaCondutores extends React.Component{
                     </div>
                             </div>
                     </div>
-                <FooterPath pathRef={div => this.myElement = div} />
+                <FooterPath pathFooter={div => this.myElement = div} />
             </div>
         );
     }

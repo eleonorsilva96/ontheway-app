@@ -39,13 +39,14 @@ class Atividade extends React.Component{
         this.handleClickPedido = this.handleClickPedido.bind(this);
     }
 
+
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTween
+       /* this.myTween
             .to(this.myElementPathTop, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
             .to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
             .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
-        ;
+        ;*/
 
         this.props.fetchUser({ type: "FETCH_USER", user: 2 });
     }
@@ -185,7 +186,7 @@ class Atividade extends React.Component{
                 
 
                 </div>
-                <FooterPath pathRef={div => this.myElementPathBottom = div} />
+                <FooterPath pathFooter={div => this.myElementPathBottom = div} />
             </div>
         );
     }

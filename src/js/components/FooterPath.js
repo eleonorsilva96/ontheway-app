@@ -5,7 +5,7 @@ import '../../main.css';
 
 const FooterPath = props => {
         return (
-            <div className="menu footer d-flex justify-content-between align-items-center bars white shadow">
+            <div ref={props.pathMenu} className="menu footer d-flex justify-content-between align-items-center bars white shadow">
                 <div className="p-2 logo icons-size bring-to-front">
 
                 </div>
@@ -21,7 +21,7 @@ const FooterPath = props => {
                 <div className="p-2 activity icons-size bring-to-front">
 
                 </div>
-                <div ref={props.pathRef} className="path-bottom justify-content-center">
+                <div ref={props.pathFooter} className="path-bottom justify-content-center">
 
                 </div>
                 <div className="background white shadow align-self-center">
