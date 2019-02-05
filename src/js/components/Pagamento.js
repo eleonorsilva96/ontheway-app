@@ -73,7 +73,7 @@ class Pagamento extends React.Component{
                                     <div className="d-flex m-3 flex-column align-items-center">
                                         <h5 className="h4 pb-3 text-uppercase font-weight-bold text-center">amigos<br/>em comum</h5>
                                         <div className="circle-size d-flex align-items-center justify-content-center rounded-circle white shadow">
-                                            <span id="nr-amigos" className="h5 primary-text font-weight-bold">6</span>
+                                            <span id="nr-amigos" className="h5 primary-text font-weight-bold">0</span>
                                         </div>
                                     </div>
                                     <div className="pl-5 pt-2 d-flex flex-column align-items-center">
