@@ -30,6 +30,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Condutor extends React.Component{
+    
+
     constructor(props) {
         super(props);
 
@@ -69,7 +71,11 @@ class Condutor extends React.Component{
         this.props.addProduto({ nome, tamanho, viagem });
         this.setState({ nome: "" , produto: "", viagem: "" });
 
-        this.props.history.push('/pagamento');
+        const data = this.props.viagem.viagemInfo;
+        console.log('AQUI',data);
+        this.props.history.push('/pagamento',{
+            state: { data }
+        });
     }
 
     render (){

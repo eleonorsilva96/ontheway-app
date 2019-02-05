@@ -47,6 +47,8 @@ class Pagamento extends React.Component{
     }
 
     render (){
+        const infoCondutor = this.props.history.location.state.state.data;
+        console.log(infoCondutor);
         return(
             <div className="container-fluid white-back h-100 p-0">
                 <MenuPath />
@@ -67,7 +69,7 @@ class Pagamento extends React.Component{
                                     <div className="m-3 d-flex flex-column align-items-center">
                                         <h5 className="h4 pb-3 text-uppercase font-weight-bold text-center">viagens<br/>realizadas</h5>
                                         <div className="circle-size d-flex align-items-center justify-content-center rounded-circle white shadow">
-                                            <span id="nr-viagens" className="h5 primary-text font-weight-bold">6</span>
+                                            <span id="nr-viagens" className="h5 primary-text font-weight-bold">{infoCondutor.user.totalViagens}</span>
                                         </div>
                                     </div>
                                     <div className="d-flex m-3 flex-column align-items-center">
@@ -78,10 +80,10 @@ class Pagamento extends React.Component{
                                     </div>
                                     <div className="pl-5 pt-2 d-flex flex-column align-items-center">
                                         <div className="row align-items-center align-self-start">
-                                            <h5 className="text-uppercase align-items-center font-weight-bold primary-text">Zé Pedro</h5>
+                                            <h5 className="text-uppercase align-items-center font-weight-bold primary-text">{infoCondutor.user.name}</h5>
                                             <div className="icon-star">
                                             </div>
-                                            <span id="review" className="font-weight-bold">3.5</span>
+                                            <span id="review" className="font-weight-bold">{infoCondutor.user.nota}</span>
                                         </div>
                                         <div className="d-flex row align-items-center gray-2-text">
                                             <p className="text-left">Vamos poupar tempo e dinheiro? E o nosso ambiente também!</p>
