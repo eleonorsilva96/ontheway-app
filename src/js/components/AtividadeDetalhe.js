@@ -4,16 +4,29 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../../main.css';
 import Image from "./Image";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import FooterPath from "./FooterPath";
-import "react-datepicker/dist/react-datepicker.css";
-import { registerLocale, setDefaultLocale } from "react-datepicker";
-import pt from 'react-datepicker/node_modules/date-fns/locale/pt';
+// import "react-datepicker/dist/react-datepicker.css";
+// import { registerLocale, setDefaultLocale } from "react-datepicker";
+// import pt from 'react-datepicker/node_modules/date-fns/locale/pt';
 import MenuPath from "./MenuPath";
-registerLocale('pt', pt);
-setDefaultLocale('pt');
+// registerLocale('pt', pt);
+// setDefaultLocale('pt');
 
 import { connect } from "react-redux";
+import { fetchViagem } from "../actions/viagems";
+
+
+const mapStateToProps = state => {
+
+    return { viagem: state.viagem };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+      fetchViagem: viagem => dispatch(fetchViagem(viagem)),
+    };
+};
 
 class AtividadeDetalhe extends React.Component{
     constructor(props) {
@@ -28,7 +41,10 @@ class AtividadeDetalhe extends React.Component{
     componentDidMount(){
         // use the node ref to create the animation
         console.log('THIS', this);
-        this.myTweenPath = TweenLite.to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0});
+        // this.myTweenPath = TweenLite.to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0});
+
+        const id = this.props.match.params.id;
+        this.props.fetchViagem({ type: "FETCH_VIAGEM", viagem: id });
     }
 
     handleSubmit(event) {
@@ -39,6 +55,11 @@ class AtividadeDetalhe extends React.Component{
     }
 
     render (){
+        const viagem = this.props.viagem.viagemInfo;
+        console.log('VIAGEM', viagem);
+        const produto = this.props.history.location.state.produto;
+        console.log('PRODUTO', produto);
+        if(viagem.user && viagem.estado){
         return(
             <div className="container-fluid h-100 p-0">
                 <MenuPath />
@@ -48,12 +69,12 @@ class AtividadeDetalhe extends React.Component{
                         <div className="row d-flex justify-content-center align-items-center">
                             <div className="col-4 d-flex flex-column align-items-center">
                                 <h5 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">Produto</h5>
-                                <h3 id="nome-produto" className="h3 d-flex text-uppercase align-items-center font-weight-bold primary-text"></h3>
-                                <h6 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">(<span id="tamanho-produto"></span>)</h6>
+                                <h3 id="nome-produto" className="h3 d-flex text-uppercase align-items-center font-weight-bold primary-text">{produto.nome}</h3>
+                                <h6 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">(<span id="tamanho-produto">{produto.id}</span>)</h6>
                             </div>
                             <div className="col-4 d-flex flex-column align-items-center align-self-start">
                                 <h5 className="d-flex text-uppercase align-items-center font-weight-bold gray-text">Preço</h5>
-                                <h3 className=" h3 d-flex text-uppercase align-items-center font-weight-bold primary-text"><span id="preco-produto"></span>€</h3>
+                                <h3 className=" h3 d-flex text-uppercase align-items-center font-weight-bold primary-text"><span id="preco-produto">{viagem.preco}</span>€</h3>
                             </div>
                         </div>
 
@@ -61,12 +82,12 @@ class AtividadeDetalhe extends React.Component{
                             <div className="col-6 d-flex flex-column justify-content-start align-items-start">
                                 <div className="d-flex row align-items-center pb-3">
                                     <label className="font-weight-bold gray-text">De</label>
-                                    <div id="origem" className="h6 ml-3 primary-3-text">
+                                    <div id="origem" className="h6 ml-3 primary-3-text">{viagem.origem}
                                     </div>
                                 </div>
                                 <div className="d-flex row align-items-center">
                                     <label className="font-weight-bold gray-text">Para</label>
-                                    <div className="h6 ml-3 primary-3-text" id="destino">
+                                    <div className="h6 ml-3 primary-3-text" id="destino">{viagem.destino}
                                     </div>
                                 </div>
                             </div>
@@ -74,12 +95,12 @@ class AtividadeDetalhe extends React.Component{
                                 <div className="d-flex row pb-2 align-items-center pb-3">
                                     <label className="icon-time mr-1">
                                     </label>
-                                    <div className="h6 primary-3-text" id="tempo"><span id="inicio"></span>-<span id="fim"></span></div>
+                                    <div className="h6 primary-3-text" id="tempo"><span id="inicio">{viagem.horaInicio}</span>-<span id="fim">{viagem.horaFim}</span></div>
                                 </div>
                                 <div className="d-flex row align-items-center">
                                     <label className="icon-calender mr-1">
                                     </label>
-                                    <div className="h6 primary-3-text" id="data"></div></div>
+                                    <div className="h6 primary-3-text" id="data"></div></div>{viagem.data}
                             </div>
                         </div>
 
@@ -95,20 +116,20 @@ class AtividadeDetalhe extends React.Component{
                                     <div className="row d-flex align-items-center">
                                         <div className="pl-5 pt-2 d-flex flex-column align-items-center">
                                             <div className="row align-items-center align-self-start">
-                                                <h5 className="text-uppercase align-items-center font-weight-bold primary-text">zé pedro</h5>
+                                                <h5 className="text-uppercase align-items-center font-weight-bold primary-text">{viagem.user.name}</h5>
                                                 <div className="icon-star">
                                                 </div>
-                                                <span id="review" className="font-weight-bold">3.5</span></div>
+                                                <span id="review" className="font-weight-bold">{viagem.user.nota}</span></div>
                                             <div className="d-flex row align-items-center">
                                                 <p className="text-left">Vamos poupar tempo e dinheiro? E o nosso ambiente também!</p>
                                             </div>
                                         </div>
                                         <div className="ml-2 pl-4 d-flex flex-column align-items-center">
                                             <h6 className="font-s pb-1 align-self-start text-uppercase font-weight-bold">estado</h6>
-                                            <span id="status" className="font-xs align-self-start text-uppercase font-weight-bold primary-text">entregue</span>
+                                            <span id="status" className="font-xs align-self-start text-uppercase font-weight-bold primary-text">{viagem.estado.estado}</span>
                                             <div className="atividade-detalhe-item row ml-3 mt-3 justify-content-start align-items-center">
                                                 <div className="d-flex flex-column align-items-center">
-                                                    <h6 className="font-xs pb-1 align-self-start text-uppercase font-weight-bold">hora de entrega</h6><span className="font-xs align-self-start text-uppercase font-weight-bold primary-text"><span id="tempo-entrega font-weight-bold">35</span>min</span>
+                                                    <h6 className="font-xs pb-1 align-self-start text-uppercase font-weight-bold">hora de entrega</h6><span className="font-xs align-self-start text-uppercase font-weight-bold primary-text"><span id="tempo-entrega font-weight-bold">{viagem.horaFim}</span>min</span>
                                                 </div>
                                                 <div className="ml-4 d-flex flex-column align-items-center">
                                                     <h6 className="font-xs pb-1 align-self-start text-uppercase font-weight-bold">tempo total</h6><span className="font-xs align-self-start text-uppercase font-weight-bold primary-text"><span id="tempo-medio font-weight-bold">35</span>min</span>
@@ -134,8 +155,13 @@ class AtividadeDetalhe extends React.Component{
                 <FooterPath pathFooter={div => this.myElementPathBottom = div} />
             </div>
         );
+        } else{
+            return(
+                <div>Loading...</div>
+            );
+            }
         }
 }
 
-const AtividadeDetalheExp = connect(null, null)(AtividadeDetalhe);
+const AtividadeDetalheExp = connect(mapStateToProps, mapDispatchToProps)(AtividadeDetalhe);
 export default AtividadeDetalheExp;

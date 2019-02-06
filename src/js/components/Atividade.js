@@ -47,7 +47,7 @@ class Atividade extends React.Component{
         //     .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
         // ;
 
-        this.props.fetchUser({ type: "FETCH_USER", user: 1 });
+        this.props.fetchUser({ type: "FETCH_USER", user: 2 });
     }
 
     handleClickViagem() {
@@ -93,7 +93,7 @@ class Atividade extends React.Component{
                         
                             <div ref={div => this.pedido = div} id="pedidos">
                                 {userInfo.produtos.map((el, index) => (
-                                    <Link className="link-no-decoration" to={'/atividade2/'+el.viagems.id}>
+                                    <Link className="link-no-decoration" to={{pathname: '/atividade2/'+el.viagems.id, state: { produto: el}}}>
                                <div className="d-flex justify-content-start align-items-center p-2 m-2 row white rounded shadow">
 
                                    <div className="m-3 previewComponent-md">
@@ -138,7 +138,7 @@ class Atividade extends React.Component{
                             
                             <div ref={div => this.viagem = div} id="viagens">
                                 {userInfo.viagems.map((el, index) => (
-                                    <Link className="link-no-decoration" to={'/atividade2/'+el.id}>
+                                    <Link className="link-no-decoration" to={{pathname: '/atividade2/'+el.id, state: { produto: el }}}>
                                 <div className="d-flex justify-content-start align-items-center p-2 m-2 row white rounded shadow">
 
                                     <div className="m-3 previewComponent-md">
