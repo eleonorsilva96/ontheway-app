@@ -93,7 +93,7 @@ class Atividade extends React.Component{
                         
                             <div ref={div => this.pedido = div} id="pedidos">
                                 {userInfo.produtos.map((el, index) => (
-                                    <Link className="link-no-decoration" to="/atividade-detalhe/">
+                                    <Link className="link-no-decoration" to={'/atividade2/'+el.viagems.id}>
                                <div className="d-flex justify-content-start align-items-center p-2 m-2 row white rounded shadow">
 
                                    <div className="m-3 previewComponent-md">
@@ -120,8 +120,8 @@ class Atividade extends React.Component{
                                    </div>
 
                                    <div className="column">
-                                       <h6 className="text-uppercase font-weight-bold primary-2-text">Aveiro</h6>
-                                       <h6 className="pt-5 text-uppercase font-weight-bold primary-2-text">Porto</h6>
+                                       <h6 className="text-uppercase font-weight-bold primary-2-text">{el.viagems.origem}</h6>
+                                       <h6 className="pt-5 text-uppercase font-weight-bold primary-2-text">{el.viagems.destino}</h6>
                                    </div>
 
                                    <div className="location-img">
@@ -138,7 +138,7 @@ class Atividade extends React.Component{
                             
                             <div ref={div => this.viagem = div} id="viagens">
                                 {userInfo.viagems.map((el, index) => (
-                                    <Link className="link-no-decoration" to="/atividade-detalhe/">
+                                    <Link className="link-no-decoration" to={'/atividade2/'+el.id}>
                                 <div className="d-flex justify-content-start align-items-center p-2 m-2 row white rounded shadow">
 
                                     <div className="m-3 previewComponent-md">

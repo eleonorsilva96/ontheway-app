@@ -13,6 +13,7 @@ import MenuPath from "./MenuPath";
 registerLocale('pt', pt);
 setDefaultLocale('pt');
 
+import { connect } from "react-redux";
 
 class AtividadeDetalhe extends React.Component{
     constructor(props) {
@@ -26,6 +27,7 @@ class AtividadeDetalhe extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
+        console.log('THIS', this);
         this.myTweenPath = TweenLite.to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0});
     }
 
@@ -33,14 +35,7 @@ class AtividadeDetalhe extends React.Component{
         event.preventDefault();
         console.log('THIS', this);
 
-        const { nome } = this.state;
-        const { tamanho } = this.state;
-        const { viagem } = this.state;
-
-        this.props.addProduto({ nome, tamanho, viagem });
-        this.setState({ nome: "" , produto: "", viagem: "" });
-
-        this.props.history.push('/pagamento');
+        
     }
 
     render (){
@@ -142,4 +137,5 @@ class AtividadeDetalhe extends React.Component{
         }
 }
 
-export default AtividadeDetalhe;
+const AtividadeDetalheExp = connect(null, null)(AtividadeDetalhe);
+export default AtividadeDetalheExp;
