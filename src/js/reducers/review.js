@@ -7,8 +7,8 @@ const rootReducer = (state = initialState, action) => {
 // const rootReducer = (action) => {
   switch (action.type) {
     case ADD_REVIEW:
-      console.log('criar artigo');
-      window.location.reload();
+      console.log('criar review');
+      // window.location.reload();
       // return { ...state, articles: [...state.articles, action.payload] };
     default:
       return state;

@@ -34,16 +34,18 @@ class Review extends React.Component{
         this.state = {
             user_id: info.user.id,
             viagems_id: info.id,
+            nota: 4,
+            comentario: "Gostei muito",
             
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
-
+        
     }
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTween = TweenLite.to(this.myElement, 0.1, {ease:Power3.easeOut, autoAlpha:0}, '-=200');
+        // this.myTween = TweenLite.to(this.myElement, 0.1, {ease:Power3.easeOut, autoAlpha:0}, '-=200');
     }
 
     handleSubmit(event) {
@@ -51,9 +53,9 @@ class Review extends React.Component{
 
         const { user_id } = this.state;
         const { viagems_id } = this.state;
-        const { nota } = 4;
-        const { comentario } = "Gostei muito";
-
+        const { nota } = this.state;
+        const { comentario } = this.state;
+        console.log('TESTE');
         this.props.addReview({ nota, comentario, user_id, viagems_id });
         this.setState({ nota: "" , comentario: "", user_id: "", viagems_id: "" });
         
@@ -107,7 +109,6 @@ class Review extends React.Component{
                                 </div>
                             </div>
                         </div>
-                        <form>
                         <div className="white background-white-review rounded ml-3 mr-3">
                             <div className="d-flex flex-column justify-content-center align-items-center h-100">
                                 <h4 className="text-uppercase primary-text font-weight-bold pt-3">avaliação</h4>
@@ -116,7 +117,7 @@ class Review extends React.Component{
                                             fullSymbol={<img src="/imgs/icons/star_complete.png" className="icon-star-review" />} />
                                 </div>
                                 <div className="comment-review">
-                                    <form className="d-flex flex-column justify-content-center h-100">
+                                    <form className="d-flex flex-column justify-content-center h-100" onSubmit={this.handleSubmit}>
                                         <textarea className="textarea-review p-2 rounded" placeholder="Descreva o serviço prestado">
                                         </textarea>
                                         <div className="mt-4 mb-4 align-self-center">
@@ -129,7 +130,7 @@ class Review extends React.Component{
                                 </div>
                             </div>
                         </div>
-                        </form>           
+                                   
                     </div>
                 </div>
                 <FooterPath pathFooter={div => this.myElement = div} />
@@ -138,5 +139,5 @@ class Review extends React.Component{
     }
 }
 
-const ReviewExp = connect(null, mapDispatchToProps)(ReviewExp);
+const ReviewExp = connect(null, mapDispatchToProps)(Review);
 export default ReviewExp;
