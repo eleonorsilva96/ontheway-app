@@ -47,7 +47,7 @@ class Atividade extends React.Component{
         //     .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
         // ;
 
-        this.props.fetchUser({ type: "FETCH_USER", user: 3 });
+        this.props.fetchUser({ type: "FETCH_USER", user: 1 });
     }
 
     handleClickViagem() {
@@ -90,10 +90,10 @@ class Atividade extends React.Component{
                     
                 
                     <div className="container-fluid mt-5 pt-2">
-                        <Link className="link-no-decoration" to="/atividade-detalhe/">
+                        
                             <div ref={div => this.pedido = div} id="pedidos">
                                 {userInfo.produtos.map((el, index) => (
-
+                                    <Link className="link-no-decoration" to="/atividade-detalhe/">
                                <div className="d-flex justify-content-start align-items-center p-2 m-2 row white rounded shadow">
 
                                    <div className="m-3 previewComponent-md">
@@ -132,11 +132,13 @@ class Atividade extends React.Component{
                                        <h4 className="font-weight-bold"><span id="price">{el.viagems.preco}</span>€</h4>
                                    </div>
                                </div>
+                               </Link>
                                ))}
                             </div>
                             
                             <div ref={div => this.viagem = div} id="viagens">
                                 {userInfo.viagems.map((el, index) => (
+                                    <Link className="link-no-decoration" to="/atividade-detalhe/">
                                 <div className="d-flex justify-content-start align-items-center p-2 m-2 row white rounded shadow">
 
                                     <div className="m-3 previewComponent-md">
@@ -176,11 +178,12 @@ class Atividade extends React.Component{
                                         <h4 className="font-weight-bold"><span id="price">{el.preco}</span>€</h4>
                                     </div>
                                     
-                                </div>                                
+                                </div>  
+                                </Link>                              
                                 ))}
                                 
                             </div>
-                        </Link>
+                        
                     </div>
                 
 
