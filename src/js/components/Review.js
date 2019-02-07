@@ -99,7 +99,7 @@ class Review extends React.Component{
     render (){
 
         const user = this.props.history.location.state.user.user;
-        console.log('USER', user);
+        console.log('USER', this.props.history.location);
 
         return(
             <div className="container-fluid h-100 p-0">
@@ -164,9 +164,10 @@ class Review extends React.Component{
                                         </textarea>
                                         <div className="mt-4 mb-4 align-self-center">
                                             <div onClick={this.handleFeedback.bind(this)} className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                                <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/review/">
-                                                    Enviar
-                                                </Link> </div>
+                                                <button className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" type="submit">
+                                                    Enviar Avaliação
+                                                </button> 
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
