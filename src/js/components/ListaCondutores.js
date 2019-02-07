@@ -29,9 +29,12 @@ const mapDispatchToProps = dispatch => {
 class ListaCondutores extends React.Component{
     constructor(props) {
         super(props);
-        
+
+        this.myElementMenuTitle= null;
+        this.myElementPedidoImg = null;
         this.myElement = null;
-        this.myTween = null;
+
+        this.myTween = new TimelineLite();
 
         this.state = {
             startDate: new Date(),
@@ -55,7 +58,12 @@ class ListaCondutores extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTween = TweenLite.to(this.myElement, 1, {ease:Power3.easeOut, autoAlpha:0}, '-900');
+        this.myTween
+            .to(this.myElement, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
+            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/search_click.png)'}, "bottom-path")
+            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Detalhes do pedido"}, "bottom-path")
+        ;
+
         const viagens = this.props.viagems;
         // if(viagens == 0){
             this.props.fetchViagems({ type: "FETCH_VIAGEMS", viagems: this.props.history.location.state.state });
@@ -68,7 +76,7 @@ class ListaCondutores extends React.Component{
         console.log('TESTE', viagens);
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath />
+                <MenuPath MenuTitle={div => this.myElementMenuTitle = div}/>
                 <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
                     <div className="container-fluid mt-5 pt-2">
                             <div className="row justify-content-center">
@@ -187,7 +195,7 @@ class ListaCondutores extends React.Component{
                     </div>
                             </div>
                     </div>
-                <FooterPath pathFooter={div => this.myElement = div} />
+                <FooterPath id="bottom-path" pathFooter={div => this.myElement = div} pedidoImg={div => this.myElementPedidoImg = div} />
             </div>
         );
     }

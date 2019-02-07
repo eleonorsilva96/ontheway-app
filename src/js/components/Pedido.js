@@ -25,6 +25,12 @@ import { connect } from "react-redux";
 class Pedido extends React.Component{
     constructor(props) {
         super(props);
+
+        this.myElementMenuTitle= null;
+        this.myElementPedidoImg = null;
+
+        this.myTween = new TimelineLite();
+
         this.state = {
             origem: "",
             destino: "",
@@ -81,11 +87,18 @@ class Pedido extends React.Component{
         this.setState({ origem: "" , destino: "", tamanho: "", preco: "", dataViagem: "", horaInicio: "", horaFim: ""});
     }
 
+    componentDidMount(){
+        this.myTween
+            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Fazer Pedido"}, "title-menu")
+            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/search_click.png)'}, "title-menu")
+        ;
+    }
+
     render (){
         const { origem, destino, tamanho, nomeProduto } = this.state;
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath />
+                <MenuPath id="title-menu" MenuTitle={div => this.myElementMenuTitle = div}/>
                 <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-center">
                     <div className="container-fluid">
                         <form onSubmit={this.handleSubmit}>
@@ -161,9 +174,9 @@ class Pedido extends React.Component{
                             </div>
 
                             <div className="spacing-bottom spacing-top-b row justify-content-center align-self-center">
-                                <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
+                                <div className="m-2 row align-items-center primary-btn primary pedido justify-content-center blue-btn">
                                 {/* <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/condutores/"> */}
-                                <button type="submit" className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold">
+                                <button type="submit" className="btn-style white-text font-weight-bold text-uppercase link-no-decoration">
                                     Pesquisar
                                 </button>
                                {/* </Link>  */}
@@ -172,7 +185,7 @@ class Pedido extends React.Component{
                         </form>
                     </div>
                 </div>
-                <FooterPath />
+                <FooterPath  pedidoImg={div => this.myElementPedidoImg = div}/>
             </div>
             );
     }

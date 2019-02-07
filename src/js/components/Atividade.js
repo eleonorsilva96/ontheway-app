@@ -27,6 +27,8 @@ class Atividade extends React.Component{
         this.myElementPathBottom = null;
         this.myElementColor = null;
         this.myElementColorViagem = null;
+        this.myElementMenuTitle= null;
+        this.myElementPedidoImg = null;
 
         this.pedido = null;
         this.viagem = null;
@@ -41,13 +43,16 @@ class Atividade extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        // this.myTween
-        //     .to(this.myElementPathTop, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
-        //     .to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
-        //     .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
-        // ;
 
         this.props.fetchUser({ type: "FETCH_USER", user: 2 });
+
+        this.myTween
+            .to(this.myElementPathTop, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
+            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/activity_active.png)'}, "pathTop")
+            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Atividade"}, "pathTop")
+            .to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
+            .to(this.myElementColor, 0.1, {ease:Power3.easeOut, color:"#1220DC"}, "pathTop")
+         ;
     }
 
     handleClickViagem() {
@@ -77,9 +82,15 @@ class Atividade extends React.Component{
         const userInfo = this.props.userInfo.userInfo;
 
         if(userInfo.produtos || userInfo.viagems){
+            this.myElementPathTop = null;
+            this.myElementPathBottom = null;
+            this.myElementColor = null;
+            this.myElementMenuTitle = null;
+            this.myElementPedidoImg = null;
+            this.myTween = new TimelineLite();
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath id="pathTop" pathRef={div => this.myElementPathTop = div} />
+                <MenuPath id="pathTop" pathRef={div => this.myElementPathTop = div} MenuTitle={div => this.myElementMenuTitle = div} />
                 <div className="menu-abs p-1 absolute send-to-back d-flex justify-content-around bars white shadow">
                 </div>
                 <div className="menu p-1 bring-to-front d-flex justify-content-around bars">
@@ -188,14 +199,20 @@ class Atividade extends React.Component{
                 
 
                 </div>
-                <FooterPath pathFooter={div => this.myElementPathBottom = div} />
+                <FooterPath pathFooter={div => this.myElementPathBottom = div} atividadeImg={div => this.myElementPedidoImg = div} />
             </div>
         );
     }
     else {
+            this.myElementPathTop = null;
+            this.myElementPathBottom = null;
+            this.myElementColor = null;
+            this.myElementMenuTitle = null;
+            this.myElementPedidoImg = null;
+            this.myTween = new TimelineLite();
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath id="pathTop" pathRef={div => this.myElementPathTop = div} />
+                <MenuPath id="pathTop" pathRef={div => this.myElementPathTop = div} MenuTitle={div => this.myElementMenuTitle = div}/>
                 <div className="menu-abs p-1 absolute send-to-back d-flex justify-content-around bars white shadow">
                 </div>
                 <div className="menu p-1 bring-to-front d-flex justify-content-around bars">
@@ -210,7 +227,7 @@ class Atividade extends React.Component{
                 
 
                 </div>
-                <FooterPath pathFooter={div => this.myElementPathBottom = div} />
+                <FooterPath pathFooter={div => this.myElementPathBottom = div} atividadeImg={div => this.myElementPedidoImg = div} />
             </div>
           )
     }

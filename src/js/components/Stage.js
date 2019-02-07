@@ -8,16 +8,23 @@ import FooterPath from "./FooterPath";
 class Stage extends React.Component {
     constructor(props){
         super(props);
-        // reference to the DOM node
-        this.myElement = null;
-        // reference to the animation
-        this.myTween = null;
+        this.myElementMenuTitle= null;
+        this.myElementPedidoImg = null;
+
+        this.myTween = new TimelineLite();
+    }
+
+    componentDidMount(){
+        this.myTween
+            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Página Principal"}, "title-menu")
+            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/logo_active.png)'}, "title-menu")
+        ;
     }
 
     render(){
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath />
+                <MenuPath MenuTitle={div => this.myElementMenuTitle = div}/>
                 <div className="stage">
                     <div className="stage-items d-flex flex-column align-items-center justify-content-center">
                         <div className="m-3 logo-home"></div>
@@ -26,7 +33,7 @@ class Stage extends React.Component {
                         <div className="scroll"></div>
                     </div>
                 </div>
-                <FooterPath />
+                <FooterPath logoImg={div => this.myElementPedidoImg = div}/>
             </div>
         );
     }

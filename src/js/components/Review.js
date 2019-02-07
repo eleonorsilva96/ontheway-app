@@ -12,25 +12,68 @@ registerLocale('pt', pt);
 setDefaultLocale('pt');
 
 import Rating from 'react-rating';
+import Feedback from "./Feedback";
 
 
 class Condutor extends React.Component{
     constructor(props) {
         super(props);
-        this.myElement = null;
-        this.myTween = null;
+
+        this.myElementPagamento = null;
+        this.myElementFeedback = null;
+        this.myElementFeedbackImg = null;
+        this.myElementPedidoImg = null;
+
+        this.myElementFeedbackTitle = null;
+        this.myElementFeedbackSubTitle = null;
+        this.myElementFeedbackBtnTopDiv = null;
+        this.myElementFeedbackBtnBottom = null;
+
+        this.myElementMenuTitle= null;
+        this.myElementPath = null;
+        this.myElementMenu = null;
+
+        this.myTweenFP = new TimelineLite();
+    }
+
+    handleFeedback() {
+        this.myTweenFP
+            .to(this.myElementPagamento, 0.5, {ease:Power3.easeOut, autoAlpha:0, display:"none"}, "stage-no-photo-display")
+            .to(this.myElementFeedback, 1, {ease:Power3.easeOut, autoAlpha:1, display:"flex"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackImg, 0.1, {ease:Power3.easeOut, src:"/imgs/icons/star_green.png"}, "stage-no-photo-display")
+
+            .to(this.myElementFeedbackTitle, 0.5, {ease:Power3.easeOut, innerHTML:"avaliação<br/> enviada com <br/> sucesso"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackSubTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Obrigada por melhorar <br/> o nosso serviço!"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackBtnTopDiv, 0.1, {ease:Power3.easeOut, display:"none"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackBtnBottom, 0.5, {ease:Power3.easeOut, innerHTML:"página principal"}, "stage-no-photo-display")
+
+            .to(this.myElementPath, 0.1, {ease:Power3.easeOut, autoAlpha:1}, "stage-no-photo-display")
+        ;
     }
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTween = TweenLite.to(this.myElement, 0.1, {ease:Power3.easeOut, autoAlpha:0}, '-=200');
+        this.myTweenFP
+            .to(this.myElementPath, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
+            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/activity_active.png)'}, "bottom-path")
+            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Atividade"}, "bottom-path")
+            .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "bottom-path")
+        ;
     }
 
     render (){
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath />
-                <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
+                <MenuPath MenuTitle={div => this.myElementMenuTitle = div}/>
+                <Feedback id="feedback-display"
+                          refFeedback={div => this.myElementFeedback = div}
+                          refFeedbackImg={div => this.myElementFeedbackImg = div}
+                          refFeedbackTitle={div => this.myElementFeedbackTitle = div}
+                          refFeedbackSubTitle={div => this.myElementFeedbackSubTitle = div}
+                          refFeedbackTextBtnTopDiv={div => this.myElementFeedbackBtnTopDiv= div}
+                          refFeedbackTextBtnBottom={div => this.myElementFeedbackBtnBottom= div}
+                />
+                <div id="stage-no-photo-display" ref={div => this.myElementPagamento = div} className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
                     <div className="container-fluid mt-2">
                         <div className="row d-flex justify-content-center align-items-center mt-1 mb-1 gray-text">
                             <div className="pt-5 mr-4 col-2 align-self-start d-flex flex-column align-items-center">
@@ -82,7 +125,7 @@ class Condutor extends React.Component{
                                         <textarea className="textarea-review p-2 rounded" placeholder="Descreva o serviço prestado">
                                         </textarea>
                                         <div className="mt-4 mb-4 align-self-center">
-                                            <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
+                                            <div onClick={this.handleFeedback.bind(this)} className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
                                                 <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/review/">
                                                     Enviar
                                                 </Link> </div>
@@ -94,7 +137,7 @@ class Condutor extends React.Component{
 
                     </div>
                 </div>
-                <FooterPath pathFooter={div => this.myElement = div} />
+                <FooterPath id="bottom-path" pathFooter={div => this.myElementPath = div} pathMenu={div => this.myElementMenu = div} atividadeImg={div => this.myElementPedidoImg = div} />
             </div>
         );
     }

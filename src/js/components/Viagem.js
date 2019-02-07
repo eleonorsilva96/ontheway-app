@@ -14,6 +14,7 @@ setDefaultLocale('pt');
 
 import { connect } from "react-redux";
 import { addViagem } from "../actions/viagems";
+import Feedback from "./Feedback";
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -24,6 +25,26 @@ const mapDispatchToProps = dispatch => {
 class Viagem extends React.Component{
     constructor(props) {
         super(props);
+
+        this.myElementPagamento = null;
+        this.myElementFeedback = null;
+        this.myElementFeedbackImg = null;
+        this.myElementPedidoImg = null;
+
+        this.myElementFeedbackTitle = null;
+        this.myElementFeedbackSubTitle = null;
+        this.myElementFeedbackBtnTopDiv = null;
+        this.myElementFeedbackBtnBottom = null;
+        this.myElementFeedbackBtnBottomHref = null;
+        this.myElementFeedbackBtnBottomHrefText = null;
+        this.myElementFeedbackBtnTopDiv2 = null;
+
+        this.myElementMenuTitle= null;
+        this.myElementMenu = null;
+
+        this.myTweenFP = new TimelineLite();
+
+
         this.state = {
             origem: "",
             destino: "",
@@ -76,15 +97,51 @@ class Viagem extends React.Component{
         this.props.addViagem({ origem, destino, tamanho, preco, dataViagem, horaInicio, horaFim, tipo_id });
         this.setState({ origem: "" , destino: "", tamanho: "", preco: "", dataViagem: "", horaInicio: "", horaFim: ""});
 
-        this.props.history.push('/home');
+        //this.props.history.push('/home');
+    }
+
+    handleFeedback() {
+        this.myTweenFP
+            .to(this.myElementPagamento, 0.5, {ease:Power3.easeOut, autoAlpha:0, display:"none"}, "stage-no-photo-display")
+            .to(this.myElementFeedback, 1, {ease:Power3.easeOut, autoAlpha:1, display:"flex"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackImg, 0.1, {ease:Power3.easeOut, src:"/imgs/icons/trip_active.png"}, "stage-no-photo-display")
+
+            .to(this.myElementFeedbackTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Viagem<br/> criada com <br/> sucesso"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackSubTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Pode ver as suas viagens<br/>na área de atividade"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackBtnTopDiv, 0.1, {ease:Power3.easeOut, display:"none"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackBtnTopDiv2, 0.1, {ease:Power3.easeOut, display:"none"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackBtnBottomHref, 0.1, {ease:Power3.easeOut, display:"flex"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackBtnBottomHrefText, 0.1, {ease:Power3.easeOut, innerHTML:"Página Principal"}, "stage-no-photo-display")
+
+            .to(this.myElementPath, 0.1, {ease:Power3.easeOut, autoAlpha:1}, "stage-no-photo-display")
+        ;
+    }
+
+    componentDidMount(){
+        this.myTweenFP
+            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Criar viagem"}, "menu-path")
+            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/trip_click.png)'}, "menu-path")
+            .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "menu-path")
+        ;
     }
 
     render(){
         const { origem, destino, tamanho, preco, dataViagem, horaInicio, horaFim } = this.state;
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath />
-                    <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-center">
+                <MenuPath id="menu-path" MenuTitle={div => this.myElementMenuTitle = div}/>
+                <Feedback id="feedback-display"
+                          refFeedback={div => this.myElementFeedback = div}
+                          refFeedbackImg={div => this.myElementFeedbackImg = div}
+                          refFeedbackTitle={div => this.myElementFeedbackTitle = div}
+                          refFeedbackSubTitle={div => this.myElementFeedbackSubTitle = div}
+                          refFeedbackTextBtnTopDiv={div => this.myElementFeedbackBtnTopDiv= div}
+                          refFeedbackTextBtnTopDiv2={div => this.myElementFeedbackBtnTopDiv2= div}
+                          refFeedbackTextBtnBottom={div => this.myElementFeedbackBtnBottom= div}
+                          refFeedbackTextBtnBottomHref={div => this.myElementFeedbackBtnBottomHref= div}
+                          refFeedbackTextBtnBottomHrefText={div => this.myElementFeedbackBtnBottomHrefText= div}
+                />
+                    <div id="stage-no-photo-display" ref={div => this.myElementPagamento = div} className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-center">
                         <div className="container-fluid">
                             <form onSubmit={this.handleSubmit}>
                                 <div className="spacing-top row justify-content-center">
@@ -162,10 +219,10 @@ class Viagem extends React.Component{
                                 </div>
 
                                 <div className="spacing-bottom spacing-top-b row justify-content-center align-self-center">
-                                    <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
+                                    <div onClick={this.handleFeedback.bind(this)} className="m-2 row align-items-center primary-btn primary pedido justify-content-center blue-btn pointer">
                                         {/* <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/"> */}
-                                        <button type="submit" className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold">
-                                            Pesquisar
+                                        <button type="submit" className="btn-style white-text font-weight-bold text-uppercase link-no-decoration">
+                                            Criar viagem
                                         </button>
                                         
                                         {/* </Link> */}
@@ -175,7 +232,7 @@ class Viagem extends React.Component{
 
                         </div>
                     </div>
-                <FooterPath />
+                <FooterPath pathMenu={div => this.myElementMenu = div} viagemImg={div => this.myElementPedidoImg = div} />
             </div>
         );
     }

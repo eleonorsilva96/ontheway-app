@@ -18,6 +18,9 @@ class Registar extends React.Component{
     constructor(props) {
         super(props);
 
+        this.myElementMenuTitle= null;
+        this.myTween = null;
+
         this.state = {
             nome: "",
             apelido: "",
@@ -46,11 +49,15 @@ class Registar extends React.Component{
         this.setState({ [event.target.id]: event.target.value });
     }
 
+    componentDidMount(){
+        this.myTween = TweenLite.to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Registar"});
+    }
+
     render (){
         const { nome, apelido, email, password } = this.state;
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath />
+                <MenuPath MenuTitle={div => this.myElementMenuTitle = div}/>
                 <div className="stage-no-photo-entrar white-back d-flex flex-column align-items-center justify-content-center">
                     <div className="container-fluid">
                         <h3 className="text-center primary-text font-weight-bold h2">Registar</h3>

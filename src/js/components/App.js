@@ -49,7 +49,7 @@ class App extends React.Component {
                         <Route exact path='/review/' component={ Review }  />
                         <Route exact path='/atividade/' component={ Atividade }  />
                         <Route exact path='/pagamento/' component={ Pagamento }  />
-                        <Route exact path='/atividade2/:id' component={ AtividadeDetalhe }  />
+                        <Route exact path='/atividade2/' component={ AtividadeDetalhe }  />
                     </Switch>
                 </div>
             </Router>

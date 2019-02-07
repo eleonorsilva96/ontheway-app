@@ -8,12 +8,18 @@ import MenuPath from "./MenuPath";
 class Entrar extends React.Component{
     constructor(props) {
         super(props);
+        this.myElementMenuTitle= null;
+        this.myTween = null;
+    }
+
+    componentDidMount(){
+        this.myTween = TweenLite.to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Entrar"});
     }
 
     render (){
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath />
+                <MenuPath MenuTitle={div => this.myElementMenuTitle = div}/>
                 <div className="stage-no-photo-entrar white-back d-flex flex-column align-items-center justify-content-center">
                     <div className="container-fluid">
                         <h3 className="text-center primary-text font-weight-bold h2">Entrar</h3>
@@ -28,10 +34,10 @@ class Entrar extends React.Component{
                             </div>
                             <div className="spacing-bottom spacing-top-b row justify-content-center align-self-center">
                                 <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                    <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/home/">Entrar</Link>
+                                    <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/viagem/">Entrar</Link>
                                 </div>
                             </div>
-                            <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/atividade/">Entrar</Link>
+                            <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/review/">Entrar</Link>
 
                         </form>
 

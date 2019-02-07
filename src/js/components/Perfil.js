@@ -8,19 +8,27 @@ import ImageUpload from "./ImageUpload";
 class Perfil extends React.Component{
     constructor(props) {
         super(props);
+        this.myElementMenuTitle= null;
+        this.myElementUserImg= null;
         this.myElement = null;
-        this.myTween = null;
+
+        this.myTween = new TimelineLite();
     }
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTween = TweenLite.to(this.myElement, 0.1, {ease:Power3.easeOut, autoAlpha:0}, '-=200');
+        this.myTween
+            .to(this.myElement, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
+            .to(this.myElementUserImg, 0.1, {ease:Power3.easeOut, src:'/imgs/icons/user_active.png'}, "bottom-path")
+            .to(this.myElementUserImg, 0.1, {ease:Power3.easeOut, borderWidth:0}, "bottom-path")
+            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Perfil"}, "bottom-path")
+        ;
     }
 
     render (){
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath />
+                <MenuPath MenuTitle={div => this.myElementMenuTitle = div} userImg={div => this.myElementUserImg = div}/>
                 <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
                     <div className="container-fluid h-100 mt-2">
                         <div className="row d-flex justify-content-center align-items-center mt-1 mb-1 gray-text">

@@ -6,16 +6,19 @@ import '../../main.css';
 const Feedback = props => {
         return(
                 <div ref ={props.refFeedback} className="feedback-items flex-column align-items-center justify-content-center">
-                    <h3>Transação efectuada</h3>
-                    <h6 className="mt-2 text-center">Pagamento será efectuado <br/> depois da entrega</h6>
+                    <h3 ref ={props.refFeedbackTitle} className="text-uppercase sucess-text text-center font-weight-bold">Transação efectuada</h3>
+                    <h6 ref ={props.refFeedbackSubTitle} className="h6 mt-2 text-center gray-text">Pagamento será efectuado <br/> depois da entrega</h6>
                     <div className="mt-5 mb-5 d-flex justify-content-center">
-                        <img className="img-feedback" src="/imgs/icons/sucess.png"/>
+                        <img ref ={props.refFeedbackImg} className="img-feedback" src="/imgs/icons/sucess_green.png"/>
                     </div>
-                    <div className="m-2 d-flex align-items-center justify-content-center secondary-btn primary white-text pedido blue-btn">
-                        <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text" to="/pedido/">Fazer Pedido</Link>
+                    <div ref ={props.refFeedbackTextBtnTopDiv} id="btn-div-review" className="m-2 align-items-center justify-content-center secondary-btn sucess white-text pedido blue-btn shadow">
+                        <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase" to="/pedido/"><span ref ={props.refFeedbackTextBtnTop}>ver pedidos</span></Link>
                     </div>
-                    <div className="m-2 d-flex align-items-center justify-content-center secondary-btn white primary-text viagem white-btn">
-                        <Link className="d-flex justify-content-center align-items-center link-no-decoration primary-text" to="/viagem/">Criar Viagem</Link>
+                    <div ref ={props.refFeedbackTextBtnTopDiv2} id="feedback-viagem" className="m-2 align-items-center justify-content-center secondary-btn white white border-sucess viagem white-btn shadow">
+                        <Link className="d-flex justify-content-center align-items-center link-no-decoration sucess-text text-uppercase hover-sucess"  to="/viagem/"><span ref ={props.refFeedbackTextBtnBottom}>conversar</span></Link>
+                    </div>
+                    <div ref ={props.refFeedbackTextBtnBottomHref} id="feedback-home" className="m-2 align-items-center justify-content-center secondary-btn white white border-sucess viagem white-btn shadow">
+                        <Link className="d-flex justify-content-center align-items-center link-no-decoration sucess-text text-uppercase hover-sucess"  to="/home/"><span ref ={props.refFeedbackTextBtnBottomHrefText}>conversar</span></Link>
                     </div>
                 </div>
         );

@@ -3,15 +3,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../../main.css';
-import Image from "./Image";
-// import DatePicker from "react-datepicker";
 import FooterPath from "./FooterPath";
-// import "react-datepicker/dist/react-datepicker.css";
-// import { registerLocale, setDefaultLocale } from "react-datepicker";
-// import pt from 'react-datepicker/node_modules/date-fns/locale/pt';
 import MenuPath from "./MenuPath";
-// registerLocale('pt', pt);
-// setDefaultLocale('pt');
+import Feedback from "./Feedback";
 
 import { connect } from "react-redux";
 import { fetchViagem } from "../actions/viagems";
@@ -31,18 +25,48 @@ const mapDispatchToProps = dispatch => {
 class AtividadeDetalhe extends React.Component{
     constructor(props) {
         super(props);
-        this.myElementPathBottom = null;
+        this.myElementPath = null;
+        this.myElementMenu = null;
+        this.myElementFeedback = null;
+        this.myElementPagamento = null;
+        this.myElementFeedbackImg = null;
+        this.myElementMenuTitle= null;
+        this.myElementPedidoImg = null;
 
-        this.myTweenPath = null;
+        this.myElementFeedbackTitle = null;
+        this.myElementFeedbackSubTitle = null;
+        this.myElementFeedbackBtnTop = null;
+        this.myElementFeedbackBtnBottom = null;
+
+        this.myTweenFP = new TimelineLite();
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFeedback = this.handleFeedback.bind(this);
+    }
+
+    handleFeedback() {
+        this.myTweenFP
+            .to(this.myElementPagamento, 0.5, {ease:Power3.easeOut, autoAlpha:0, display:"none"}, "stage-no-photo-display")
+            .to(this.myElementFeedback, 1, {ease:Power3.easeOut, autoAlpha:1, display:"flex"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackImg, 0.1, {ease:Power3.easeOut, src:"/imgs/icons/sucess_green.png"}, "stage-no-photo-display")
+
+            .to(this.myElementFeedbackTitle, 0.5, {ease:Power3.easeOut, innerHTML:"encomenda confirmada"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackSubTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Pagamento efectuado"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackBtnTop, 0.5, {ease:Power3.easeOut, innerHTML:"avaliar"}, "stage-no-photo-display")
+            .to(this.myElementFeedbackBtnBottom, 0.5, {ease:Power3.easeOut, innerHTML:"novo pedido"}, "stage-no-photo-display")
+
+            .to(this.myElementPath, 0.1, {ease:Power3.easeOut, autoAlpha:1}, "stage-no-photo-display")
+        ;
     }
 
     componentDidMount(){
         // use the node ref to create the animation
-        console.log('THIS', this);
-        // this.myTweenPath = TweenLite.to(this.myElementPathBottom, 0.1, {ease:Power3.easeOut, autoAlpha:0});
-
+        this.myTweenFP
+            .to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
+            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/activity_active_click.png)'}, "bottom-path")
+            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Atividade"}, "bottom-path")
+            .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "bottom-path")
+        ;
         const id = this.props.match.params.id;
         this.props.fetchViagem({ type: "FETCH_VIAGEM", viagem: id });
     }
@@ -50,8 +74,6 @@ class AtividadeDetalhe extends React.Component{
     handleSubmit(event) {
         event.preventDefault();
         console.log('THIS', this);
-
-        
     }
 
     render (){
@@ -60,10 +82,23 @@ class AtividadeDetalhe extends React.Component{
         const produto = this.props.history.location.state.produto;
         console.log('PRODUTO', produto);
         if(viagem.user && viagem.estado){
+        this.myElementPath = null;
+        this.myElementMenu = null;
+        this.myElementMenuTitle= null;
+        this.myElementPedidoImg = null;
+        this.myTweenFP = new TimelineLite();
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath />
-                <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
+                <MenuPath MenuTitle={div => this.myElementMenuTitle = div}/>
+                <Feedback id="feedback-display"
+                          refFeedback={div => this.myElementFeedback = div}
+                          refFeedbackImg={div => this.myElementFeedbackImg = div}
+                          refFeedbackTitle={div => this.myElementFeedbackTitle = div}
+                          refFeedbackSubTitle={div => this.myElementFeedbackSubTitle = div}
+                          refFeedbackTextBtnTop={div => this.myElementFeedbackBtnTop = div}
+                          refFeedbackTextBtnBottom={div => this.myElementFeedbackBtnBottom= div}
+                />
+                <div id="stage-no-photo-display" ref={div => this.myElementPagamento = div} className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
                     <div className="container-fluid mt-5 pt-2">
 
                         <div className="row d-flex justify-content-center align-items-center">
@@ -137,12 +172,10 @@ class AtividadeDetalhe extends React.Component{
                                             </div>
                                         </div>
                                         <div className="mt-5 mb-5 row justify-content-center align-self-center">
-                                            <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                                <form>
-                                                    <button type="submit"
-                                                            className="btn-style d-flex justify-content-center align-items-center link-no-decoration text-uppercase font-weight-bold">Aceitar
-                                                    </button>
-                                                </form>
+                                            <div onClick={this.handleFeedback.bind(this)} className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
+                                                    <div
+                                                            className="btn-style white-text font-weight-bold text-uppercase link-no-decoration">Aceitar
+                                                    </div>
                                             </div>
                                         </div>
                                     </div>
@@ -152,7 +185,7 @@ class AtividadeDetalhe extends React.Component{
 
                     </div>
                 </div>
-                <FooterPath pathFooter={div => this.myElementPathBottom = div} />
+                <FooterPath id="bottom-path" pathFooter={div => this.myElementPath = div} pathMenu={div => this.myElementMenu = div} atividadeImg={div => this.myElementPedidoImg = div} />
             </div>
         );
         } else{

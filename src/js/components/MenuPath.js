@@ -10,11 +10,11 @@ const MenuPath = props => {
                 <div className="p-2 small-logo transparent bring-to-front">
 
                 </div>
-                <div className="p-2 primary-gray bring-to-front">PÁGINA PRINCIPAL</div>
-                <div className="previewComponent bring-to-front m-2">
+                <div ref={props.MenuTitle} id="title-menu" className="p-2 primary-gray h5 gray-text text-uppercase bring-to-front">Página principal</div>
+                <div  className="previewComponent bring-to-front m-2">
                     <Link to="/perfil/">
                         <div id="image-default" className="imgPreview">
-                            <img src="/imgs/icons/user_no_border.png"/>
+                            <img ref={props.userImg} src="/imgs/icons/user_no_border.png"/>
                         </div>
                     </Link>
                 </div>

@@ -14,6 +14,8 @@ class Pagamento extends React.Component{
         this.myElementTelemovel = null;
         this.myElementFeedback = null;
         this.myElementPagamento = null;
+        this.myElementMenuTitle= null;
+        this.myElementPedidoImg = null;
 
         this.myTweenDiv = null;
         this.myTweenTelemovel = null;
@@ -41,8 +43,10 @@ class Pagamento extends React.Component{
 
     componentDidMount(){
         this.myTweenFP
-            .to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0})
-            .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0})
+            .to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
+            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/search_click.png)'}, "bottom-path")
+            .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "bottom-path")
+            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Fazer Pedido"}, "bottom-path")
         ;
     }
 
@@ -51,7 +55,7 @@ class Pagamento extends React.Component{
         console.log(infoCondutor);
         return(
             <div className="container-fluid white-back h-100 p-0">
-                <MenuPath />
+                <MenuPath MenuTitle={div => this.myElementMenuTitle = div}/>
                 <Feedback id="feedback-display" refFeedback={div => this.myElementFeedback = div}/>
                 <div id="stage-no-photo-display" ref={div => this.myElementPagamento = div} className="stage-no-photo white-back flex-column align-items-center justify-content-start">
                     <div className="container-fluid mt-2">
@@ -131,7 +135,7 @@ class Pagamento extends React.Component{
 
                     </div>
                 </div>
-                <FooterPath pathFooter={div => this.myElementPath = div} pathMenu={div => this.myElementMenu = div} />
+                <FooterPath id="bottom-path" pathFooter={div => this.myElementPath = div} pathMenu={div => this.myElementMenu = div} pedidoImg={div => this.myElementPedidoImg = div} />
             </div>
         );
     }

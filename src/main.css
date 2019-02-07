@@ -408,6 +408,10 @@ Colors - background
     background-color: #FFA886;
 }
 
+.border-sucess{
+    border: 1px solid #00C653;
+}
+
 
 /*
 * Menu
@@ -441,22 +445,13 @@ Colors - background
 }
 
 .logo{
-    background: url("/imgs/icons/menu_logo.png") no-repeat center;
+    background: url("/imgs/icons/logo.png") no-repeat center;
     background-size: contain;
-}
-
-.logo:active{
-    background: url("/imgs/icons/menu_logo.png") no-repeat center;
-    background-size: contain;
+    height: 40px;
 }
 
 .search{
     background: url("/imgs/icons/search.png") no-repeat center;
-    background-size: contain;
-}
-
-.search:active{
-    background: url("/imgs/icons/search_click.png") no-repeat center;
     background-size: contain;
 }
 
@@ -465,28 +460,13 @@ Colors - background
     background-size: contain;
 }
 
-.trip:active{
-    background: url("/imgs/icons/trip_click.png") no-repeat center;
-    background-size: contain;
-}
-
 .message{
     background: url("/imgs/icons/message.png") no-repeat center;
     background-size: contain;
 }
 
-.message:active{
-    background: url("/imgs/icons/message_active.png") no-repeat center;
-    background-size: contain;
-}
-
 .activity {
     background: url("/imgs/icons/activity.png") no-repeat center;
-    background-size: contain;
-}
-
-.activity:active {
-    background: url("/imgs/icons/activity_active.png") no-repeat center;
     background-size: contain;
 }
 
@@ -785,6 +765,20 @@ Colors - background
     height: 40%;
 }
 
+#btn-div-review{
+    display: flex;
+}
+
+#btn-div-review:hover{
+    color: #00C653;
+}
+
+.hover-sucess:hover {
+    color: #00C653;
+    font-weight: bold;
+}
+
+
 /*
 * Loading Spinner
  */
@@ -952,4 +946,16 @@ Colors - background
 
 .atividade-detalhe-item{
     width: 113%;
+}
+
+/*
+* Feedback
+ */
+
+#feedback-viagem{
+    display: flex;
+}
+
+#feedback-home{
+    display: none;
 }

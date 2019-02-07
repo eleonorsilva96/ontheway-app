@@ -35,8 +35,11 @@ class Condutor extends React.Component{
     constructor(props) {
         super(props);
 
+        this.myElementMenuTitle= null;
+        this.myElementPedidoImg = null;
         this.myElement = null;
-        this.myTween = null;
+
+        this.myTween = new TimelineLite();
 
         console.log('AQUI',this);
         const produto = this.props.history.location.state.produto;
@@ -54,7 +57,12 @@ class Condutor extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        // this.myTween = TweenLite.to(this.myElement, 0.1, {ease:Power3.easeOut, autoAlpha:0});
+        this.myTween
+            .to(this.myElement, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
+            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/search_click.png)'}, "bottom-path")
+            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Detalhes do pedido"}, "bottom-path")
+        ;
+
         const id = this.props.match.params.id;
         this.props.fetchViagem({ type: "FETCH_VIAGEM", viagem: id });
         console.log('INFO', this.props.history.location.state.produto);
@@ -82,11 +90,14 @@ class Condutor extends React.Component{
         const viagem = this.props.viagem.viagemInfo;
         const produto = this.props.history.location.state.produto;
         console.log('VIAGEM',this);
-        if(viagem.user)
-        {
+        if(viagem.user) {
+            this.myElement = null;
+            this.myElementMenuTitle= null;
+            this.myElementPedidoImg = null;
+            this.myTween = null;
         return(
             <div className="container-fluid h-100 p-0">
-                <MenuPath />
+                <MenuPath MenuTitle={div => this.myElementMenuTitle = div}/>
                 <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
                     <div className="container-fluid mt-5 pt-2">
 
@@ -143,13 +154,13 @@ class Condutor extends React.Component{
                                                 <span id="nr-viagens" className="h5 primary-text font-weight-bold">{viagem.user.totalViagens}</span>
                                             </div>
                                         </div>
-{/*
+
                                         <div className="d-flex m-3 flex-column align-items-center">
                                             <h5 className="h4 pb-3 text-uppercase font-weight-bold text-center">amigos<br/>em comum</h5>
                                             <div className="circle-size d-flex align-items-center justify-content-center rounded-circle white shadow">
-                                                <span id="nr-amigos" className="h5 primary-text font-weight-bold">6</span>
+                                                <span id="nr-amigos" className="h5 primary-text font-weight-bold">0</span>
                                             </div>
-                                        </div> */}
+                                        </div>
 
                                         <div className="pl-5 pt-2 d-flex flex-column align-items-center">
                                             <div className="row align-items-center align-self-start">
@@ -169,7 +180,7 @@ class Condutor extends React.Component{
                                                     Aceitar
                                                 </Link>  */}
                                                 <form onSubmit={this.handleSubmit}>
-                                                <button type="submit" className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold">
+                                                <button type="submit" className="btn-style white-text font-weight-bold text-uppercase link-no-decoration">
                                                     Aceitar
                                                 </button>
                                                 </form>
@@ -182,7 +193,7 @@ class Condutor extends React.Component{
 
                     </div>
                 </div>
-                <FooterPath pathFooter={div => this.myElement = div} />
+                <FooterPath id="bottom-path" pathFooter={div => this.myElement = div} pedidoImg={div => this.myElementPedidoImg = div}/>
             </div>
         );
         } else {
