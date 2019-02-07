@@ -43,8 +43,7 @@ class Atividade extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-
-        this.props.fetchUser({ type: "FETCH_USER", user: 2 });
+        this.props.fetchUser({ type: "FETCH_USER", user: 1 });
 
         this.myTween
             .to(this.myElementPathTop, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
@@ -149,13 +148,13 @@ class Atividade extends React.Component{
                             
                             <div ref={div => this.viagem = div} id="viagens">
                                 {userInfo.viagems.map((el, index) => (
-                                    <Link className="link-no-decoration" to={{pathname: '/atividade2/'+el.id, state: { produto: el }}}>
+                                    <Link className="link-no-decoration" to={{pathname: '/atividade2/'+el.id, state: { produto: el.produto }}}>
                                 <div className="d-flex justify-content-start align-items-center p-2 m-2 row white rounded shadow">
 
-                                    <div className="m-3 previewComponent-md">
+                                    {/* <div className="m-3 previewComponent-md">
                                         <div id="image-default" className="image-default">
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <div className="col-5 column">
                                         <div className="row d-flex align-items-center">

@@ -14,8 +14,16 @@ setDefaultLocale('pt');
 import Rating from 'react-rating';
 import Feedback from "./Feedback";
 
+import { connect } from "react-redux";
+import { addReview } from "../actions/reviews";
 
-class Condutor extends React.Component{
+const mapDispatchToProps = dispatch => {
+    return {
+      addReview: review => dispatch(addReview(review)),
+    };
+};
+
+class Review extends React.Component{
     constructor(props) {
         super(props);
 
@@ -34,6 +42,19 @@ class Condutor extends React.Component{
         this.myElementMenu = null;
 
         this.myTweenFP = new TimelineLite();
+
+        const info = this.props.history.location.state.user;
+        console.log('Info',info);
+
+        this.state = {
+            user_id: info.user.id,
+            viagems_id: info.id,
+            nota: 4,
+            comentario: "Gostei muito",
+
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleFeedback() {
@@ -61,7 +82,25 @@ class Condutor extends React.Component{
         ;
     }
 
+    handleSubmit(event) {
+        event.preventDefault();
+
+        const { user_id } = this.state;
+        const { viagems_id } = this.state;
+        const { nota } = this.state;
+        const { comentario } = this.state;
+        console.log('TESTE');
+        this.props.addReview({ nota, comentario, user_id, viagems_id });
+        this.setState({ nota: "" , comentario: "", user_id: "", viagems_id: "" });
+
+        this.props.history.push('/home');
+    }
+
     render (){
+
+        const user = this.props.history.location.state.user.user;
+        console.log('USER', user);
+
         return(
             <div className="container-fluid h-100 p-0">
                 <MenuPath MenuTitle={div => this.myElementMenuTitle = div}/>
@@ -89,21 +128,21 @@ class Condutor extends React.Component{
                                     <div className="m-3 d-flex flex-column align-items-center">
                                         <h5 className="h4 pb-3 text-uppercase font-weight-bold text-center">viagens<br/>realizadas</h5>
                                         <div className="circle-size d-flex align-items-center justify-content-center rounded-circle white shadow">
-                                            <span id="nr-viagens" className="h5 primary-text font-weight-bold">6</span>
+                                            <span id="nr-viagens" className="h5 primary-text font-weight-bold">{user.totalViagem}</span>
                                         </div>
                                     </div>
-                                    <div className="d-flex m-3 flex-column align-items-center">
+                                    {/* <div className="d-flex m-3 flex-column align-items-center">
                                         <h5 className="h4 pb-3 text-uppercase font-weight-bold text-center">amigos<br/>em comum</h5>
                                         <div className="circle-size d-flex align-items-center justify-content-center rounded-circle white shadow">
                                             <span id="nr-amigos" className="h5 primary-text font-weight-bold">6</span>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="pl-5 pt-2 d-flex flex-column align-items-center">
                                         <div className="row align-items-center align-self-start">
-                                            <h5 className="text-uppercase align-items-center font-weight-bold primary-text">Zé Pedro</h5>
+                                            <h5 className="text-uppercase align-items-center font-weight-bold primary-text">{user.name}</h5>
                                             <div className="icon-star">
                                             </div>
-                                            <span id="review" className="font-weight-bold">3.5</span>
+                                            <span id="review" className="font-weight-bold">{user.nota}</span>
                                         </div>
                                         <div className="d-flex row align-items-center gray-2-text">
                                             <p className="text-left">Vamos poupar tempo e dinheiro? E o nosso ambiente também!</p>
@@ -112,7 +151,6 @@ class Condutor extends React.Component{
                                 </div>
                             </div>
                         </div>
-
                         <div className="white background-white-review rounded ml-3 mr-3">
                             <div className="d-flex flex-column justify-content-center align-items-center h-100">
                                 <h4 className="text-uppercase primary-text font-weight-bold pt-3">avaliação</h4>
@@ -121,7 +159,7 @@ class Condutor extends React.Component{
                                             fullSymbol={<img src="/imgs/icons/star_complete.png" className="icon-star-review" />} />
                                 </div>
                                 <div className="comment-review">
-                                    <form className="d-flex flex-column justify-content-center h-100">
+                                    <form className="d-flex flex-column justify-content-center h-100" onSubmit={this.handleSubmit}>
                                         <textarea className="textarea-review p-2 rounded" placeholder="Descreva o serviço prestado">
                                         </textarea>
                                         <div className="mt-4 mb-4 align-self-center">
@@ -143,4 +181,5 @@ class Condutor extends React.Component{
     }
 }
 
-export default Condutor;
+const ReviewExp = connect(null, mapDispatchToProps)(Review);
+export default ReviewExp;

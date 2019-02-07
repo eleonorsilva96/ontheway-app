@@ -6,6 +6,7 @@ import mySagaViagems from './getViagems';
 import mySagaProdutoPOST from './PostProduto';
 import mySagaViagemPOST from './PostViagem';
 import mySagaUserPOST from './PostUser';
+import mySagaReviewPOST from './PostReview';
 
 
 
@@ -26,6 +27,7 @@ function* rootSaga() {
     fork(mySagaProdutoPOST),
     fork(mySagaViagemPOST),
     fork(mySagaUserPOST),
+    fork(mySagaReviewPOST),
 
     // fork(tokenSaga),
   ]
