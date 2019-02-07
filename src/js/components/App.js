@@ -15,7 +15,7 @@ import Pagamento from "./Pagamento";
 import Atividade from "./Atividade";
 import Feedback from "./Feedback";
 import AtividadeDetalhe from "./AtividadeDetalhe";
-
+import BrowserHistory from "react-router-dom/BrowserRouter";
 
 const loader = document.querySelector('.loader');
 
@@ -33,7 +33,7 @@ class App extends React.Component {
 
     render(){
         return(
-            <Router>
+            <Router history={new BrowserHistory}>
                 <div className="h-100 p-0">
                     <Switch>
                         <Route exact path='/' component={ Homepage}  />

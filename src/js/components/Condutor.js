@@ -180,7 +180,7 @@ class Condutor extends React.Component{
                                                     Aceitar
                                                 </Link>  */}
                                                 <form onSubmit={this.handleSubmit}>
-                                                <button type="submit" className="btn-style white-text font-weight-bold text-uppercase link-no-decoration">
+                                                <button type="submit" className="btn-style white-text font-weight-bold text-uppercase white-text link-no-decoration">
                                                     Aceitar
                                                 </button>
                                                 </form>

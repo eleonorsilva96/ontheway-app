@@ -61,12 +61,12 @@ class AtividadeDetalhe extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        // this.myTweenFP
-        //     .to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
-        //     .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/activity_active_click.png)'}, "bottom-path")
-        //     .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Atividade"}, "bottom-path")
-        //     .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "bottom-path")
-        // ;
+           this.myTweenFP
+           .to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
+            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/activity_active_click.png)'}, "bottom-path")
+            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Atividade"}, "bottom-path")
+            .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "bottom-path")
+         ;
         const id = this.props.match.params.id;
         this.props.fetchViagem({ type: "FETCH_VIAGEM", viagem: id });
     }
@@ -277,7 +277,7 @@ class AtividadeDetalhe extends React.Component{
                                         <div className="mt-5 mb-5 row justify-content-center align-self-center">
                                             <div onClick={this.handleFeedback.bind(this)} className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
                                                     <div
-                                                            className="btn-style white-text font-weight-bold text-uppercase link-no-decoration">Aceitar
+                                                            className="btn-style white-text font-weight-bold text-uppercase white-text link-no-decoration">Aceitar
                                                     </div>
                                             </div>
                                         </div>

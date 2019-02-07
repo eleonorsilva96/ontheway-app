@@ -221,7 +221,7 @@ class Viagem extends React.Component{
                                 <div className="spacing-bottom spacing-top-b row justify-content-center align-self-center">
                                     <div onClick={this.handleFeedback.bind(this)} className="m-2 row align-items-center primary-btn primary pedido justify-content-center blue-btn pointer">
                                         {/* <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" to="/"> */}
-                                        <button type="submit" className="btn-style white-text font-weight-bold text-uppercase link-no-decoration">
+                                        <button type="submit" className="btn-style white-text font-weight-bold text-uppercase white-text link-no-decoration">
                                             Criar viagem
                                         </button>
                                         
