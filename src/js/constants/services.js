@@ -1,1 +1,1 @@
-export const ENDPOINT = 'http://localhost:8000/api/';
+export const ENDPOINT = 'http://http://ec2-18-221-48-111.us-east-2.compute.amazonaws.com/api/';
