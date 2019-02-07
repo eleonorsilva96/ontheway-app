@@ -40,7 +40,7 @@ class AtividadeDetalhe extends React.Component{
 
         this.myTweenFP = new TimelineLite();
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFeedback = this.handleFeedback.bind(this);
     }
 
@@ -61,12 +61,12 @@ class AtividadeDetalhe extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTweenFP
-            .to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
-            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/activity_active_click.png)'}, "bottom-path")
-            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Atividade"}, "bottom-path")
-            .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "bottom-path")
-        ;
+        // this.myTweenFP
+        //     .to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
+        //     .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/activity_active_click.png)'}, "bottom-path")
+        //     .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Atividade"}, "bottom-path")
+        //     .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "bottom-path")
+        // ;
         const id = this.props.match.params.id;
         this.props.fetchViagem({ type: "FETCH_VIAGEM", viagem: id });
     }

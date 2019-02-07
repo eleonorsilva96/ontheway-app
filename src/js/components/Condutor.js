@@ -57,11 +57,11 @@ class Condutor extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.myTween
-            .to(this.myElement, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
-            .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/search_click.png)'}, "bottom-path")
-            .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Detalhes do pedido"}, "bottom-path")
-        ;
+        // this.myTween
+        //     .to(this.myElement, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
+        //     .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/search_click.png)'}, "bottom-path")
+        //     .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Detalhes do pedido"}, "bottom-path")
+        // ;
 
         const id = this.props.match.params.id;
         this.props.fetchViagem({ type: "FETCH_VIAGEM", viagem: id });
