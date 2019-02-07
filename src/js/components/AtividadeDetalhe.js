@@ -183,7 +183,7 @@ class AtividadeDetalhe extends React.Component{
 
                     </div>
                 </div>
-                <FooterPath pathFooter={div => this.myElementPath = div} />
+                <FooterPath pathFooter={div => this.myElementPath = div} pathMenu={div => this.myElementMenu = div} atividadeImg={div => this.myElementPedidoImg = div} />
             </div>
         );
         }
@@ -195,7 +195,7 @@ class AtividadeDetalhe extends React.Component{
             this.myTweenFP = new TimelineLite();
             return(
                 <div className="container-fluid h-100 p-0">
-                <MenuPath />
+                <MenuPath MenuTitle={div => this.myElementMenuTitle = div}/>
                 <div className="stage-no-photo white-back d-flex flex-column align-items-center justify-content-start">
                     <div className="container-fluid mt-5 pt-2">
 

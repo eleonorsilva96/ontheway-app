@@ -12,10 +12,10 @@ const Feedback = props => {
                         <img ref ={props.refFeedbackImg} className="img-feedback" src="/imgs/icons/sucess_green.png"/>
                     </div>
                     <div ref ={props.refFeedbackTextBtnTopDiv} id="btn-div-review" className="m-2 align-items-center justify-content-center secondary-btn sucess white-text pedido blue-btn shadow">
-                        <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase" to="/pedido/"><span ref ={props.refFeedbackTextBtnTop}>ver pedidos</span></Link>
+                        <Link className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase" to="/atividade/"><span ref ={props.refFeedbackTextBtnTop}>ver pedidos</span></Link>
                     </div>
                     <div ref ={props.refFeedbackTextBtnTopDiv2} id="feedback-viagem" className="m-2 align-items-center justify-content-center secondary-btn white white border-sucess viagem white-btn shadow">
-                        <Link className="d-flex justify-content-center align-items-center link-no-decoration sucess-text text-uppercase hover-sucess"  to="/viagem/"><span ref ={props.refFeedbackTextBtnBottom}>conversar</span></Link>
+                        <Link className="d-flex justify-content-center align-items-center link-no-decoration sucess-text text-uppercase hover-sucess"  to="/atividade/"><span ref ={props.refFeedbackTextBtnBottom}>conversar</span></Link>
                     </div>
                     <div ref ={props.refFeedbackTextBtnBottomHref} id="feedback-home" className="m-2 align-items-center justify-content-center secondary-btn white white border-sucess viagem white-btn shadow">
                         <Link className="d-flex justify-content-center align-items-center link-no-decoration sucess-text text-uppercase hover-sucess"  to="/home/"><span ref ={props.refFeedbackTextBtnBottomHrefText}>conversar</span></Link>
