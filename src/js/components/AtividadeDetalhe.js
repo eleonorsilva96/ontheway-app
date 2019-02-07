@@ -171,7 +171,7 @@ class AtividadeDetalhe extends React.Component{
                                             <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
 
                                                     <Link to={{pathname: '/review/', state: { user: viagem }} }>
-                                                    <div className="btn-style d-flex justify-content-center align-items-center link-no-decoration text-uppercase font-weight-bold">Avaliar</div>
+                                                    <div className="btn-style white-text font-weight-bold text-uppercase white-text link-no-decoration">Avaliar</div>
                                                     </Link>
 
                                             </div>
@@ -276,8 +276,7 @@ class AtividadeDetalhe extends React.Component{
                                         </div>
                                         <div className="mt-5 mb-5 row justify-content-center align-self-center">
                                             <div onClick={this.handleFeedback.bind(this)} className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                                    <div
-                                                            className="btn-style white-text font-weight-bold text-uppercase white-text link-no-decoration">Aceitar
+                                                    <div className="btn-style white-text font-weight-bold text-uppercase link-no-decoration">Aceitar
                                                     </div>
                                             </div>
                                         </div>

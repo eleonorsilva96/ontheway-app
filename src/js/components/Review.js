@@ -164,7 +164,7 @@ class Review extends React.Component{
                                         </textarea>
                                         <div className="mt-4 mb-4 align-self-center">
                                             <div onClick={this.handleFeedback.bind(this)} className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                                <button className="d-flex justify-content-center align-items-center link-no-decoration white-text text-uppercase font-weight-bold" type="submit">
+                                                <button className="btn-style white-text font-weight-bold text-uppercase white-text link-no-decoration" type="submit">
                                                     Enviar Avaliação
                                                 </button> 
                                             </div>
