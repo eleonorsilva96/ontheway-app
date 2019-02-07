@@ -62,6 +62,7 @@ class Review extends React.Component{
             .to(this.myElementPagamento, 0.5, {ease:Power3.easeOut, autoAlpha:0, display:"none"}, "stage-no-photo-display")
             .to(this.myElementFeedback, 1, {ease:Power3.easeOut, autoAlpha:1, display:"flex"}, "stage-no-photo-display")
             .to(this.myElementFeedbackImg, 0.1, {ease:Power3.easeOut, src:"/imgs/icons/star_green.png"}, "stage-no-photo-display")
+            .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "stage-no-photo-display")
 
             .to(this.myElementFeedbackTitle, 0.5, {ease:Power3.easeOut, innerHTML:"avaliação<br/> enviada com <br/> sucesso"}, "stage-no-photo-display")
             .to(this.myElementFeedbackSubTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Obrigada por melhorar <br/> o nosso serviço!"}, "stage-no-photo-display")
@@ -78,7 +79,7 @@ class Review extends React.Component{
             .to(this.myElementPath, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
             .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/activity_active.png)'}, "bottom-path")
             .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Atividade"}, "bottom-path")
-            .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "bottom-path")
+            .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"relative", height:"55px"}, "bottom-path")
         ;
     }
 
@@ -151,7 +152,7 @@ class Review extends React.Component{
                                 </div>
                             </div>
                         </div>
-                        <div className="white background-white-review rounded ml-3 mr-3">
+                        <div className="white white-height background-white-review rounded ml-3 mr-3">
                             <div className="d-flex flex-column justify-content-center align-items-center h-100">
                                 <h4 className="text-uppercase primary-text font-weight-bold pt-3">avaliação</h4>
                                 <div id="stars-review" className="mt-2 mb-2">
@@ -164,7 +165,7 @@ class Review extends React.Component{
                                         </textarea>
                                         <div className="mt-4 mb-4 align-self-center">
                                             <div onClick={this.handleFeedback.bind(this)} className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
-                                                <button className="btn-style white-text font-weight-bold text-uppercase white-text link-no-decoration" type="submit">
+                                                <button className="btn-style font-weight-bold text-uppercase white-text link-no-decoration" type="submit">
                                                     Enviar Avaliação
                                                 </button> 
                                             </div>

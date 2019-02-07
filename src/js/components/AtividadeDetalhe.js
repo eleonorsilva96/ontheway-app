@@ -62,11 +62,11 @@ class AtividadeDetalhe extends React.Component{
     componentDidMount(){
         // use the node ref to create the animation
         // this.myTweenFP
-        //     .to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
-        //     .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/activity_active_click.png)'}, "bottom-path")
-        //     .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Atividade"}, "bottom-path")
-        //     .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "bottom-path")
-        // ;
+          //   .to(this.myElementPath, 1, {ease:Power3.easeOut, autoAlpha:0}, "bottom-path")
+          //   .to(this.myElementPedidoImg, 0.1, {ease:Power3.easeOut, backgroundImage:'url(/imgs/icons/activity_active_click.png)'}, "bottom-path")
+          //   .to(this.myElementMenuTitle, 0.5, {ease:Power3.easeOut, innerHTML:"Atividade"}, "bottom-path")
+          //   .to(this.myElementMenu, 1, {ease:Power3.easeOut, position:"absolute", width:"100%", bottom:0}, "bottom-path")
+         //;
         const id = this.props.match.params.id;
         this.props.fetchViagem({ type: "FETCH_VIAGEM", viagem: id });
     }
@@ -135,7 +135,7 @@ class AtividadeDetalhe extends React.Component{
                             </div>
                         </div>
 
-                        <div className="white background-white-condutor rounded ml-3 mr-3">
+                        <div className="white white-height background-white-condutor rounded ml-3 mr-3">
                             <div className="row d-flex justify-content-center align-items-center">
                                 <div className="pt-4 pt-1 mr-4 col-1 align-self-start d-flex flex-column align-items-center">
                                     <div className="mb-3 previewComponent-gd">
@@ -168,10 +168,10 @@ class AtividadeDetalhe extends React.Component{
                                             </div>
                                         </div>
                                         <div className="mt-5 mb-5 row justify-content-center align-self-center">
-                                            <div className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
+                                            <div onClick={this.handleFeedback.bind(this)} className="m-2 row align-items-center primary-btn primary white-text pedido justify-content-center blue-btn">
 
                                                     <Link to={{pathname: '/review/', state: { user: viagem }} }>
-                                                    <div className="btn-style d-flex justify-content-center align-items-center link-no-decoration text-uppercase font-weight-bold">Avaliar</div>
+                                                    <div className="btn-style white-text font-weight-bold text-uppercase link-no-decoration">Aceitar</div>
                                                     </Link>
 
                                             </div>

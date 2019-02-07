@@ -57,10 +57,15 @@ h5{
 
 button{
     border: 0;
+    -moz-appearance: none;
 }
 
 .btn-style{
     background: transparent;
+}
+
+.btn-style:hover{
+    text-decoration: none;
 }
 
 .pointer{
@@ -351,6 +356,10 @@ Colors - background
 
 .white{
     background-color: #FCFCFC;
+}
+
+.white-height{
+    height: 380px;
 }
 
 .white-back{
