@@ -17,7 +17,7 @@ function addViagemPOST(viagem){
     horaFim: horaFimBody,
     preco: viagem.payload.preco,
     tamanho: viagem.payload.tamanho,
-    user_id: 2,
+    user_id: 1,
   }));
 
   
@@ -35,7 +35,7 @@ function addViagemPOST(viagem){
       horaFim: horaFimBody,
       preco: viagem.payload.preco,
       tamanho: viagem.payload.tamanho,
-      user_id: 2,
+      user_id: 3,
       tipo_id: viagem.payload.tipo_id,
     })
   }).then(response => response.json(), );

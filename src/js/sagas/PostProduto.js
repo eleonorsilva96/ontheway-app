@@ -20,7 +20,7 @@ function addProdutoPOST(produto){
       nome: produto.payload.nome,
       tamanho: produto.payload.tamanho,
       viagems_id: produto.payload.viagem,
-      user_id: 1
+      user_id: 4
   })
   }).then(response => response.json(), );
 }
