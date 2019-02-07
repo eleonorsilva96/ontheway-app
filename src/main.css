@@ -65,7 +65,7 @@ button{
 }
 
 .btn-style:hover{
-    text-decoration: none;
+    color: #FCFCFC;
 }
 
 .pointer{
@@ -779,7 +779,7 @@ Colors - background
 }
 
 #btn-div-review:hover{
-    color: #00C653;
+    color: white;
 }
 
 .hover-sucess:hover {
