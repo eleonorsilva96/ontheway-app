@@ -93,7 +93,7 @@ class Review extends React.Component{
         this.props.addReview({ nota, comentario, user_id, viagems_id });
         this.setState({ nota: "" , comentario: "", user_id: "", viagems_id: "" });
 
-        this.props.history.push('/home');
+        // this.props.history.push('/home');
     }
 
     render (){
