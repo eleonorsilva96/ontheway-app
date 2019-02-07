@@ -43,7 +43,7 @@ class Atividade extends React.Component{
 
     componentDidMount(){
         // use the node ref to create the animation
-        this.props.fetchUser({ type: "FETCH_USER", user: 1 });
+        this.props.fetchUser({ type: "FETCH_USER", user: 4 });
 
         this.myTween
             .to(this.myElementPathTop, 0.1, {ease:Power3.easeOut, autoAlpha:0}, "pathTop")
